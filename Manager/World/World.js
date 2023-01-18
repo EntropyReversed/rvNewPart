@@ -44,19 +44,21 @@ export default class World {
     const edgeTimeline = this.model.edgeRim.getTimeline();
     const cameraTimeline2 = this.camera.getTimeline2();
     const modelPiecesTimeline = this.model.modelPieces.getTimeline();
+    const stripeTimeline = this.model.stripe.getTimeline();
 
     this.masterTimeline
-      .add(modelTimeline1)
-      .add(title1, '<+0.1')
-      .add(linesTimeline, '-=0.35')
-      .add(modelTimeline2, '-=1.3')
-      .add(linesReverse, '-=0.3')
-      .add(gradientTimeline, '-=0.1')
-      .add(cameraTimeline)
-      .add(modelLinesTimeline, '<')
-      .add(edgeTimeline, '-=1.5')
-      .add(cameraTimeline2, '-=1.2')
-      .add(modelPiecesTimeline);
+      // .add(modelTimeline1)
+      // .add(title1, '<+0.1')
+      // .add(linesTimeline, '-=0.35')
+      // .add(modelTimeline2, '-=1.3')
+      // .add(linesReverse, '-=0.3')
+      // .add(gradientTimeline, '-=0.1')
+      // .add(cameraTimeline)
+      // .add(modelLinesTimeline, '<')
+      // .add(edgeTimeline, '-=1.5')
+      // .add(cameraTimeline2, '-=1.2')
+      // .add(modelPiecesTimeline)
+      .add(stripeTimeline);
 
     this.scrollTrigger = new TriggerScroll(this.manager);
   }

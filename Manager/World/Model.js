@@ -5,6 +5,7 @@ import LinesAnimation from './LinesAnimation';
 import ModelLines from '../../Manager/World/ModelLines';
 import EdgeRim from '../../Manager/World/EdgeRim';
 import ModelPieces from '../../Manager/World/ModelPieces';
+import Stripe from '../../Manager/World/Stripe';
 
 export default class Model {
   constructor(manager) {
@@ -33,6 +34,14 @@ export default class Model {
         case child.name === 'Circle':
           this.circle = child;
           this.setModelPart(child, 1);
+          break;
+        case child.name === 'CircleBottom':
+          this.circleBottom = child;
+          this.setModelPart(child);
+          break;
+        case child.name === 'Strip':
+          this.stripeMesh = child;
+          this.setModelPart(child);
           break;
         case child.name === 'LettersFill':
           this.letters = child;
@@ -72,20 +81,19 @@ export default class Model {
       this.mainColor
     );
 
+    this.stripe = new Stripe(this.manager, this.stripeMesh);
+
+    this.modelGroup.add(this.stripeMesh);
+    this.modelGroup.add(this.circleBottom);
     this.modelGroup.add(this.circle);
     this.modelGroup.add(this.letters);
     this.modelGroup.add(this.lettersTop);
-    // this.modelGroup.scale.set(0.47, 0.47, 0.47);
-
-    // this.rimRingGroup.scale.set(0.47, 0.47, 0.47);
     this.modelGroup.add(this.rimRingGroup);
 
     this.scene.add(this.modelGroup);
   }
 
   setModelPart(part, startOp = 0, shade = false) {
-    // part.layers.enable(0);
-
     part.material = this.mainMaterial.clone();
     part.material.transparent = true;
     part.material.color = this.mainColor;

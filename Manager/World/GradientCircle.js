@@ -6,7 +6,7 @@ import {
   PlaneGeometry,
   ShaderMaterial,
 } from 'three';
-import Shader from './../Shaders/ShaderGradient';
+import ShaderGradient from './../Shaders/ShaderGradient';
 import gsap from 'gsap';
 
 export default class GradientCircle {
@@ -16,7 +16,6 @@ export default class GradientCircle {
     this.camera = this.manager.camera.perspectiveCamera;
     this.scene = this.manager.scene;
     this.model = model;
-    this.masterTimeline = this.manager.masterTimeline;
     this.texture = this.manager.world.textures.gradientTexture;
     this.lettersTex = this.manager.world.textures.lettersTexture;
     this.setCircleGrad();
@@ -39,7 +38,7 @@ export default class GradientCircle {
 
     this.materialGrad = new ShaderMaterial({
       uniforms: this.uniforms,
-      ...Shader,
+      ...ShaderGradient,
       transparent: true,
     });
     this.materialGrad.depthWrite = false;
