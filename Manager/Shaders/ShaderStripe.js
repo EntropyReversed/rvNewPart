@@ -22,7 +22,7 @@ export default {
       vec2 uv = vUv;
       vec4 color = texture2D(u_texture, uv);
       
-      uv.x += (cos(uv.y*5.+progress*8.)/60.0);
+      uv.y += (cos(uv.y*5.+progress*8.)/60.0);
 
       vec3 alphaMask = vec3(opacity) * smoothstep(progress,progress+0.03,uv.x);
 

@@ -21,14 +21,14 @@ export default class Manager {
     this.masterTimeline = gsap.timeline();
     this.world = new World(this);
 
-    this.pause = true;
+    this.pause = false;
 
     this.stats = new Stats();
     document.body.appendChild(this.stats.dom);
 
     document.addEventListener('DOMContentLoaded', () => {
       new RealVhCssVar();
-    }); // end doc ready
+    });
 
     document.body.onmousedown = function (e) {
       if (e.button === 1) return false;

@@ -1,6 +1,5 @@
 import { MeshStandardMaterial } from 'three';
 import gsap from 'gsap';
-import Manager from '../../Manager/Manager';
 
 export default class ModelPieces {
   constructor(manager, pieces, group, color) {

@@ -2,11 +2,13 @@ import { UniformsUtils, Clock, ShaderMaterial } from 'three';
 import gsap from 'gsap';
 import ShaderStripe from './../Shaders/ShaderStripe';
 
+import * as dat from 'dat.gui';
+
 export default class Stripe {
   constructor(manager, stripe) {
     this.manager = manager;
     this.stripe = stripe;
-
+    this.texture = this.manager.world.textures.gradientTexture;
     this.setUp();
   }
 
@@ -16,7 +18,7 @@ export default class Stripe {
     this.uniforms = UniformsUtils.merge([
       { u_texture: { value: null } },
       { opacity: { value: 0 } },
-      { progress: { value: 0.34 } },
+      { progress: { value: 0 } },
     ]);
 
     this.material = new ShaderMaterial({
@@ -26,21 +28,23 @@ export default class Stripe {
     });
     this.material.depthWrite = false;
 
+    this.material.uniforms.u_texture.value = this.texture;
+
     this.stripe.material = this.material;
+
+    // const gui = new dat.GUI();
+    // var folder1 = gui.addFolder('progress');
+    // folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
   }
 
   getTimeline() {
     this.timeline = gsap
       .timeline()
       .set(this.stripe.material, { depthWrite: true })
-      .fromTo(
-        this.material.uniforms.opacity,
-        { value: 0 },
-        { value: 1, duration: 0.1 }
-      )
+      .set(this.material.uniforms.opacity, { value: 1 })
       .to(
         this.material.uniforms.progress,
-        { value: -0.2, duration: 1.4 },
+        { value: 1, duration: 1.4 },
         '<+=0.1'
       );
     return this.timeline;
