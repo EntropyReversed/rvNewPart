@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "version": "0.0.0",
+  "private": true,
+  "engines": {
+    "node": "16.14.2"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "events": "^3.3.0",
+    "three": "^0.146.0"
+  },
+  "devDependencies": {
+    "dat.gui": "^0.7.9",
+    "gsap": "^3.11.3",
+    "vite": "^2.9.9"
+  }
+}
