@@ -38,6 +38,7 @@ export default class World {
     const title1 = this.text.getTimeline();
     const modelTimeline1 = this.model.timeline;
     const modelTimeline2 = this.model.timeline2;
+    const modelTimeline3 = this.model.timeline3;
     const cameraTimeline = this.camera.getTimeline();
     const gradientTimeline = this.model.gradientCircle.getTimeline();
     const modelLinesTimeline = this.model.modelLines.getTimeline();
@@ -47,17 +48,18 @@ export default class World {
     const stripeTimeline = this.model.stripe.getTimeline();
 
     this.masterTimeline
-      // .add(modelTimeline1)
-      // .add(title1, '<+0.1')
-      // .add(linesTimeline, '-=0.35')
-      // .add(modelTimeline2, '-=1.3')
-      // .add(linesReverse, '-=0.3')
-      // .add(gradientTimeline, '-=0.1')
-      // .add(cameraTimeline)
-      // .add(modelLinesTimeline, '<')
-      // .add(edgeTimeline, '-=1.5')
-      // .add(cameraTimeline2, '-=1.2')
-      // .add(modelPiecesTimeline)
+      .add(modelTimeline1)
+      .add(title1, '<+0.1')
+      .add(linesTimeline, '-=0.35')
+      .add(modelTimeline2, '-=1.3')
+      .add(linesReverse, '-=0.3')
+      .add(gradientTimeline, '-=0.1')
+      .add(cameraTimeline)
+      .add(modelLinesTimeline, '<')
+      .add(edgeTimeline, '-=1.5')
+      .add(cameraTimeline2, '-=1.2')
+      .add(modelPiecesTimeline)
+      .add(modelTimeline3)
       .add(stripeTimeline);
 
     this.scrollTrigger = new TriggerScroll(this.manager);

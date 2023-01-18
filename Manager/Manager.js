@@ -7,16 +7,10 @@ import World from './World/World';
 import assets from './Utils/assets';
 import gsap from 'gsap';
 import { RealVhCssVar } from '../Manager/Utils/RealVhCssVar';
-// import Stats from 'three/addons/libs/stats.module.js';
+import Stats from 'three/addons/libs/stats.module.js';
 
 export default class Manager {
-  static instance;
-
   constructor(parent) {
-    if (Manager.instance) {
-      return Manager.instance;
-    }
-    Manager.instance = this;
     this.parent = parent;
     this.canvas = this.parent.querySelector('canvas');
     this.scene = new Scene();
@@ -29,8 +23,8 @@ export default class Manager {
 
     this.pause = true;
 
-    // this.stats = new Stats();
-    // document.body.appendChild(this.stats.dom);
+    this.stats = new Stats();
+    document.body.appendChild(this.stats.dom);
 
     document.addEventListener('DOMContentLoaded', () => {
       new RealVhCssVar();
@@ -55,7 +49,7 @@ export default class Manager {
 
   update() {
     this.renderer.update();
-    // this.stats.update();
+    this.stats.update();
 
     this.world.model.gradientCircle.updateTime();
 

@@ -153,5 +153,9 @@ export default class Model {
       .to({}, { duration: 0.05 })
       .to('.secondTitle', { opacity: 0 }, '<+0.5')
       .to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
+
+    this.timeline3 = gsap
+      .timeline()
+      .to(this.modelGroup.rotation, { x: 0, y: 0 });
   }
 }
