@@ -1,10 +1,9 @@
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Manager from '../Manager';
 
 export default class TriggerScroll {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     gsap.registerPlugin(ScrollTrigger);
     this.createTrigger();
   }

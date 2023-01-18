@@ -1,6 +1,5 @@
 import { Color, MeshStandardMaterial, Group } from 'three';
 import gsap from 'gsap';
-import Manager from '../Manager';
 import GradientCircle from './GradientCircle';
 import LinesAnimation from './LinesAnimation';
 import ModelLines from '../../Manager/World/ModelLines';
@@ -8,8 +7,8 @@ import EdgeRim from '../../Manager/World/EdgeRim';
 import ModelPieces from '../../Manager/World/ModelPieces';
 
 export default class Model {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     this.scene = this.manager.scene;
     this.resources = this.manager.resources;
     this.model = this.resources.items.model;
@@ -18,7 +17,7 @@ export default class Model {
     this.setModel();
 
     this.lines = new LinesAnimation(this.scene);
-    this.gradientCircle = new GradientCircle(this.lines, this);
+    this.gradientCircle = new GradientCircle(this.manager, this.lines, this);
 
     this.createTimeline();
   }
@@ -59,12 +58,14 @@ export default class Model {
     });
 
     this.modelPieces = new ModelPieces(
+      this.manager,
       this.pieces,
       this.modelGroup,
       this.mainColor
     );
     this.modelLines = new ModelLines(this.mLines, this.rimRingGroup);
     this.edgeRim = new EdgeRim(
+      this.manager,
       this.edge,
       this.edgeInner,
       this.rimRingGroup,

@@ -3,8 +3,8 @@ import gsap from 'gsap';
 import Manager from '../../Manager/Manager';
 
 export default class ModelPieces {
-  constructor(pieces, group, color) {
-    this.manager = new Manager();
+  constructor(manager, pieces, group, color) {
+    this.manager = manager;
     this.scene = this.manager.scene;
     this.pieces = pieces;
     this.group = group;
@@ -45,15 +45,10 @@ export default class ModelPieces {
     this.pieces.forEach((piece) => {
       this.timeline.set(piece, { visible: true });
     });
-    this.timeline
-    .to(
-      this.manager.world.model.letters.position,
-      {
-        z: 0,
-        duration: 0.4,
-      },
-
-    )
+    this.timeline.to(this.manager.world.model.letters.position, {
+      z: 0,
+      duration: 0.4,
+    });
 
     const pieceDuration = 6;
     let maxDelay = 0;

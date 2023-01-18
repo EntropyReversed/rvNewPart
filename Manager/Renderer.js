@@ -1,4 +1,3 @@
-import Manager from './Manager';
 import {
   WebGLRenderer,
   Color,
@@ -20,8 +19,8 @@ const params = {
 };
 
 export default class Renderer {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     this.sizes = this.manager.sizes;
     this.scene = this.manager.scene;
     this.canvas = this.manager.canvas;

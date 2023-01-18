@@ -1,11 +1,10 @@
 import { UniformsUtils, ShaderMaterial } from 'three';
 import gsap from 'gsap';
 import ShaderInnerRim from './../Shaders/ShaderInnerRim';
-import Manager from './../Manager';
 
 export default class EdgeRim {
-  constructor(edge, inner, group, color) {
-    this.manager = new Manager();
+  constructor(manager, edge, inner, group, color) {
+    this.manager = manager;
     this.edge = edge;
     this.inner = inner;
     this.group = group;

@@ -5,12 +5,11 @@ import {
   SpotLight,
   AmbientLight,
 } from 'three';
-import Manager from '../Manager';
 // import { GUI } from 'dat.gui';
 
 export default class Enviroment {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     this.scene = this.manager.scene;
 
     this.setSunlight();

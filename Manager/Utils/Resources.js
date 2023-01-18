@@ -1,10 +1,9 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
-import Manager from '../Manager';
 
 export default class Resources {
-  constructor(assets) {
-    this.manager = new Manager();
+  constructor(manager, assets) {
+    this.manager = manager;
     this.renderer = this.manager.renderer;
 
     this.assets = assets;

@@ -1,4 +1,3 @@
-import Manager from '../Manager';
 import Model from './Model';
 import Enviroment from './Enviroment';
 import Text from './Text';
@@ -6,13 +5,13 @@ import TriggerScroll from '../Utils/TriggerScroll';
 import Textures from './../Utils/Textures';
 
 export default class World {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     this.masterTimeline = this.manager.masterTimeline;
     this.resources = this.manager.resources;
     this.text = new Text(this.manager);
     this.camera = this.manager.camera;
-    this.enviroment = new Enviroment();
+    this.enviroment = new Enviroment(this.manager);
     this.textures = new Textures();
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
@@ -28,7 +27,7 @@ export default class World {
   }
 
   onReady() {
-    this.model = new Model();
+    this.model = new Model(this.manager);
     this.setUpTimeline();
     window.requestAnimationFrame(() => this.manager.update());
   }
@@ -59,6 +58,6 @@ export default class World {
       .add(cameraTimeline2, '-=1.2')
       .add(modelPiecesTimeline);
 
-    this.scrollTrigger = new TriggerScroll();
+    this.scrollTrigger = new TriggerScroll(this.manager);
   }
 }

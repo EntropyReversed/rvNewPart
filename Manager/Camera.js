@@ -1,4 +1,3 @@
-import Manager from './Manager';
 import {
   PerspectiveCamera,
   // CameraHelper,
@@ -11,8 +10,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import gsap from 'gsap';
 
 export default class Camera {
-  constructor() {
-    this.manager = new Manager();
+  constructor(manager) {
+    this.manager = manager;
     this.sizes = this.manager.sizes;
     this.scene = this.manager.scene;
     this.canvas = this.manager.canvas;

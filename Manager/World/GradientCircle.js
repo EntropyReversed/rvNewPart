@@ -6,14 +6,13 @@ import {
   PlaneGeometry,
   ShaderMaterial,
 } from 'three';
-import Manager from '../Manager';
 import Shader from './../Shaders/ShaderGradient';
 import gsap from 'gsap';
 
 export default class GradientCircle {
-  constructor(lines, model) {
+  constructor(manager, lines, model) {
+    this.manager = manager;
     this.lines = lines;
-    this.manager = new Manager();
     this.camera = this.manager.camera.perspectiveCamera;
     this.scene = this.manager.scene;
     this.model = model;

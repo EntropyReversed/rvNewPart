@@ -21,11 +21,11 @@ export default class Manager {
     this.canvas = this.parent.querySelector('canvas');
     this.scene = new Scene();
     this.sizes = new Sizes();
-    this.camera = new Camera();
-    this.renderer = new Renderer();
-    this.resources = new Resources(assets);
+    this.camera = new Camera(this);
+    this.renderer = new Renderer(this);
+    this.resources = new Resources(this, assets);
     this.masterTimeline = gsap.timeline();
-    this.world = new World();
+    this.world = new World(this);
 
     this.pause = true;
 
