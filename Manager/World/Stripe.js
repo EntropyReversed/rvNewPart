@@ -42,7 +42,11 @@ export default class Stripe {
       .timeline()
       .set(this.stripe.material, { depthWrite: true })
       .set(this.material.uniforms.opacity, { value: 0.4 })
-      .to(this.material.uniforms.progress, { value: 1, duration: 3 }, '<+=0.1')
+      .to(
+        this.material.uniforms.progress,
+        { value: 1, duration: 2 },
+        '<+=0.1'
+      )
       .to(this.material.uniforms.opacity, { value: 0, duration: 1 }, '<+=1');
     return this.timeline;
   }

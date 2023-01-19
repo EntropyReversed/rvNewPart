@@ -172,6 +172,6 @@ export default class Model {
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
       .to(this.modelGroup.position, { x: -2.09, duration: 2 }, '<')
-      .to(this.modelGroup.rotation, { z: -1.6, duration: 2 });
+      .to(this.modelGroup.rotation, { z: -1.6, duration: 4 });
   }
 }
