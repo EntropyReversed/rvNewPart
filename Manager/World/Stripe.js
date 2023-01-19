@@ -17,9 +17,8 @@ export default class Stripe {
 
     this.uniforms = UniformsUtils.merge([
       { u_texture: { value: null } },
-      { opacity: { value: 0 } },
-      { progress: { value: 1 } },
-      { time: { value: this.clock.getElapsedTime() } }
+      { opacity: { value: 1 } },
+      { progress: { value: 0 } },
     ]);
 
     this.material = new ShaderMaterial({
@@ -33,9 +32,9 @@ export default class Stripe {
 
     this.stripe.material = this.material;
 
-    // const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('progress');
-    // folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('progress');
+    folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
   }
 
   getTimeline() {
@@ -43,15 +42,8 @@ export default class Stripe {
       .timeline()
       .set(this.stripe.material, { depthWrite: true })
       .set(this.material.uniforms.opacity, { value: 0.4 })
-      .to(
-        this.material.uniforms.progress,
-        { value: 0, duration: 3 },
-        '<+=0.1'
-      )      .to(
-        this.material.uniforms.opacity,
-        { value: 0, duration: 1 },
-        '<+=1'
-      );
+      .to(this.material.uniforms.progress, { value: 1, duration: 3 }, '<+=0.1')
+      .to(this.material.uniforms.opacity, { value: 0, duration: 1 }, '<+=1');
     return this.timeline;
   }
 }
