@@ -19,6 +19,7 @@ export default class Stripe {
       { u_texture: { value: null } },
       { opacity: { value: 0 } },
       { progress: { value: 1 } },
+      { time: { value: this.clock.getElapsedTime() } }
     ]);
 
     this.material = new ShaderMaterial({
