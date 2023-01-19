@@ -18,7 +18,7 @@ export default class Stripe {
     this.uniforms = UniformsUtils.merge([
       { u_texture: { value: null } },
       { opacity: { value: 0 } },
-      { progress: { value: 0 } },
+      { progress: { value: 1 } },
     ]);
 
     this.material = new ShaderMaterial({
@@ -44,7 +44,7 @@ export default class Stripe {
       .set(this.material.uniforms.opacity, { value: 1 })
       .to(
         this.material.uniforms.progress,
-        { value: 1, duration: 1.4 },
+        { value: 0, duration: 1.4 },
         '<+=0.1'
       );
     return this.timeline;
