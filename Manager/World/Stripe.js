@@ -41,7 +41,7 @@ export default class Stripe {
     this.timeline = gsap
       .timeline()
       .set(this.stripe.material, { depthWrite: true })
-      .set(this.material.uniforms.opacity, { value: 0.6 })
+      .set(this.material.uniforms.opacity, { value: 0.4 })
       .to(
         this.material.uniforms.progress,
         { value: 0, duration: 3 },
