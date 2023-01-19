@@ -8,6 +8,7 @@ import {
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 // import { GUI } from 'dat.gui';
 import gsap from 'gsap';
+import { animateText } from '../Manager/Utils/animateText';
 
 export default class Camera {
   constructor(manager) {
@@ -146,21 +147,9 @@ export default class Camera {
         { x: -1, y: -1, z: -1.58, duration: 2 },
         '<'
       )
-      .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<+0.5')
-      .fromTo(
-        '.fourthTitle',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.2, ease: 'power3.out' },
-        '<+0.5'
-      )
-      .fromTo(
-        '.fourthTitle',
-        { scale: 2 },
-        { scale: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
-      )
-      .to({}, { duration: 0.1 })
-      .to('.fourthTitle', { opacity: 0 }, '<+0.6');
+      .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<+0.5');
+
+    animateText(this.timeline2, '.fourthTitle', '<+0.5', '<', '<+0.6');
 
     return this.timeline2;
   }

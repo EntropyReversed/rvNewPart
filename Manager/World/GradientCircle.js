@@ -8,6 +8,7 @@ import {
 } from 'three';
 import ShaderGradient from './../Shaders/ShaderGradient';
 import gsap from 'gsap';
+import { animateText } from '../../Manager/Utils/animateText';
 
 export default class GradientCircle {
   constructor(manager, lines, model) {
@@ -143,22 +144,11 @@ export default class GradientCircle {
           // },
         },
         '<+=0.2'
-      )
-      .fromTo(
-        '.thirdTitle',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
-      )
-      .fromTo(
-        '.thirdTitle',
-        { scale: 2 },
-        { scale: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
-      )
-      .to({}, { duration: 0.1 })
-      .to('.thirdTitle', { opacity: 0 }, '<+0.3')
+      );
 
+    animateText(this.timeline, '.thirdTitle', '<', '<', '<+0.3');
+
+    this.timeline
       .to(this.model.lettersTop.position, { z: 0.2, duration: 0.2 }, '-=0.3')
       .to(this.model.lettersTop.scale, { z: 1.9, duration: 0.2 }, '<');
 

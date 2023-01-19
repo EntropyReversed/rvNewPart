@@ -1,5 +1,6 @@
 import { MeshStandardMaterial } from 'three';
 import gsap from 'gsap';
+import { animateText } from '../../Manager/Utils/animateText';
 
 export default class ModelPieces {
   constructor(manager, pieces, group, color) {
@@ -108,20 +109,9 @@ export default class ModelPieces {
           duration: 4,
         },
         '<'
-      )
-
-      .fromTo(
-        '.fifthTitle',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.2, ease: 'power3.out' },
-        '-=0.5'
-      )
-      .fromTo(
-        '.fifthTitle',
-        { scale: 2 },
-        { scale: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
       );
+
+    animateText(this.timeline, '.fifthTitle', '-=0.5', '<');
 
     this.pieces.forEach((piece) => {
       this.timeline.set(piece, { visible: false });

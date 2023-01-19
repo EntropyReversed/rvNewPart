@@ -8,6 +8,7 @@ import ModelPieces from '../../Manager/World/ModelPieces';
 import Stripe from '../../Manager/World/Stripe';
 
 import * as dat from 'dat.gui';
+import { animateText } from '../../Manager/Utils/animateText';
 
 export default class Model {
   constructor(manager) {
@@ -160,21 +161,10 @@ export default class Model {
         '<+0.2'
       )
       .to(this.lettersTop.material, { opacity: 0.3 })
-      .fromTo(
-        '.secondTitle',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
-      )
-      .fromTo(
-        '.secondTitle',
-        { scale: 2 },
-        { scale: 1, duration: 0.2, ease: 'power3.out' },
-        '<'
-      )
-      .to({}, { duration: 0.05 })
-      .to('.secondTitle', { opacity: 0 }, '<+0.5')
-      .to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
+      
+      animateText(this.timeline2, ".secondTitle")
+
+      this.timeline2.to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
 
     this.timeline3 = gsap
       .timeline()
