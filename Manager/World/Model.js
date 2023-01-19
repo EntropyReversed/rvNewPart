@@ -31,41 +31,50 @@ export default class Model {
     this.modelGroup = new Group();
     this.pieces = [];
 
+    const actions = {
+      Circle: (child) => {
+        this.circle = child;
+        this.setModelPart(child, 1);
+      },
+      CircleBottom: (child) => {
+        this.circleBottom = child;
+        this.setModelPart(child);
+      },
+      Strip: (child) => {
+        this.stripeMesh = child;
+        this.setModelPart(child);
+      },
+      LettersFill: (child) => {
+        this.letters = child;
+        this.setModelPart(child);
+      },
+      Letters: (child) => {
+        this.lettersTop = child;
+        this.setModelPart(child);
+      },
+      ring: (child) => {
+        this.mLines = child;
+      },
+      rim: (child) => {
+        this.edge = child;
+      },
+      rimInner: (child) => {
+        this.edgeInner = child;
+      },
+      Piece: (child) => {
+        this.pieces.push(child);
+      },
+    };
+
     this.model.scene.traverse((child) => {
-      switch (true) {
-        case child.name === 'Circle':
-          this.circle = child;
-          this.setModelPart(child, 1);
-          break;
-        case child.name === 'CircleBottom':
-          this.circleBottom = child;
-          this.setModelPart(child);
-          break;
-        case child.name === 'Strip':
-          this.stripeMesh = child;
-          this.setModelPart(child);
-          break;
-        case child.name === 'LettersFill':
-          this.letters = child;
-          this.setModelPart(child);
-          break;
-        case child.name === 'Letters':
-          this.lettersTop = child;
-          this.setModelPart(child);
-          break;
-        case child.name === 'ring':
-          this.mLines = child;
-          break;
-        case child.name === 'rim':
-          this.edge = child;
-          break;
-        case child.name === 'rimInner':
-          this.edgeInner = child;
-          break;
-        case child.name.includes('Piece'):
-          this.pieces.push(child);
-          break;
-      }
+      const action =
+        actions[child.name] ||
+        ((child) => {
+          if (child.name.includes('Piece')) {
+            this.pieces.push(child);
+          }
+        });
+      action(child);
     });
 
     this.modelPieces = new ModelPieces(
@@ -94,13 +103,14 @@ export default class Model {
 
     const gui = new dat.GUI();
     var folder1 = gui.addFolder('Rotation');
-    folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder1.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
     folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
 
-    // var folder2 = gui.addFolder('Position');
-    // folder2.add(this.circle.position, 'x', -10, 10, 0.01);
-    // folder2.add(this.circle.position, 'y', -10, 10, 0.01);
-    // folder2.add(this.circle.position, 'z', -10, 10, 0.01);
+    var folder2 = gui.addFolder('Position');
+    folder2.add(this.modelGroup.position, 'x', -10, 10, 0.01);
+    folder2.add(this.modelGroup.position, 'y', -10, 10, 0.01);
+    folder2.add(this.modelGroup.position, 'z', -10, 10, 0.01);
 
     this.scene.add(this.modelGroup);
   }
@@ -168,9 +178,10 @@ export default class Model {
 
     this.timeline3 = gsap
       .timeline()
-      // .to(this.circle.position, { z: 0.2, duration: 0.4 })
-      // .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
-      // .to(this.modelGroup.rotation, { x: -1, y: -1.23, z: 4.66, duration: 2 })
-      // .to(this.modelGroup.position, { x: -4.3, duration: 2 }, '<');
+      .to(this.circle.position, { z: 0.2, duration: 0.4 })
+      .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
+      .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
+      .to(this.modelGroup.position, { x: -2.09, duration: 2 }, '<')
+      .to(this.modelGroup.rotation, { z: -1.6, duration: 2 });
   }
 }
