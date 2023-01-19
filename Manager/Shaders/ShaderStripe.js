@@ -22,11 +22,11 @@ export default {
       vec2 uv = vUv;
       vec4 color = texture2D(u_texture, uv);
       
-      uv.y += (cos(uv.y*5.+progress*8.)/60.0);
+      // uv.x += (cos(uv.x*5.+progress*8.)/60.0);
 
-      vec3 alphaMask = vec3(opacity) * smoothstep(progress,progress+0.03,uv.x);
+      vec3 alphaMask = vec3(opacity) * (1.0 - smoothstep(progress,progress+0.03,uv.x));
 
-      gl_FragColor = vec4( color.rgb, alphaMask);
+      gl_FragColor = vec4( vec3(vUv.y), alphaMask);
 
     }
   `,

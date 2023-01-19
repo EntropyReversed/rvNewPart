@@ -92,10 +92,10 @@ export default class Model {
     this.modelGroup.add(this.lettersTop);
     this.modelGroup.add(this.rimRingGroup);
 
-    // const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('Rotation');
-    // folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
-    // folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('Rotation');
+    folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
 
     // var folder2 = gui.addFolder('Position');
     // folder2.add(this.circle.position, 'x', -10, 10, 0.01);
@@ -168,9 +168,9 @@ export default class Model {
 
     this.timeline3 = gsap
       .timeline()
-      .to(this.circle.position, { z: 0.2, duration: 0.4 })
-      .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
-      .to(this.modelGroup.rotation, { x: -1, y: -1.23, z: 4.66, duration: 2 })
-      .to(this.modelGroup.position, { x: -4.3, duration: 2 }, '<');
+      // .to(this.circle.position, { z: 0.2, duration: 0.4 })
+      // .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
+      // .to(this.modelGroup.rotation, { x: -1, y: -1.23, z: 4.66, duration: 2 })
+      // .to(this.modelGroup.position, { x: -4.3, duration: 2 }, '<');
   }
 }

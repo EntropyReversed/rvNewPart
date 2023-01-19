@@ -1,9 +1,11 @@
-import { CanvasTexture } from 'three';
+import { CanvasTexture, ClampToEdgeWrapping } from 'three';
 
 export default class Textures {
   constructor() {
     this.gradientTexture = new CanvasTexture(this.generateTexture());
     this.lettersTexture = new CanvasTexture(this.generateTextureLetters());
+
+    this.gradientTexture.wrapS = this.gradientTexture.wrapT = ClampToEdgeWrapping;
     // this.noiseTexture = new CanvasTexture(this.generateWhiteNoise());
   }
 
