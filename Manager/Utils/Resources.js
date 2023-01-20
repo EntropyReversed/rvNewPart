@@ -36,11 +36,11 @@ export default class Resources {
         });
       }
 
-      // if (asset.type === 'image') {
-      //   this.loaders.textureLoader.load(asset.path, (file) => {
-      //     this.singleAssetLoaded(asset, file);
-      //   });
-      // }
+      if (asset.type === 'image') {
+        this.loaders.textureLoader.load(asset.path, (file) => {
+          this.singleAssetLoaded(asset, file);
+        });
+      }
     }
   }
 

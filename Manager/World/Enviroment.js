@@ -5,7 +5,7 @@ import {
   SpotLight,
   AmbientLight,
 } from 'three';
-// import { GUI } from 'dat.gui';
+import * as dat from 'dat.gui';
 
 export default class Enviroment {
   constructor(manager) {
@@ -43,6 +43,11 @@ export default class Enviroment {
     this.ambientlight = new AmbientLight('#ffffff', 1.2);
     this.scene.add(this.ambientlight);
 
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('light');
+    folder1.add(this.sunLight.position, 'x', -10, 10, 0.01);
+    folder1.add(this.sunLight.position, 'y', -10, 10, 0.01);
+    folder1.add(this.sunLight.position, 'z', -10, 10, 0.01);
     //     const gui = new GUI();
     // const folder = gui.addFolder('Camera Pos');
 

@@ -94,7 +94,7 @@ export default class Model {
       this.mainColor
     );
 
-    // this.testVertex = new TestVertex(this.manager, this.modelGroup);
+    this.testVertex = new TestVertex(this.manager, this.modelGroup);
 
     this.stripe = new Stripe(this.manager, this.stripeMesh);
 
@@ -105,16 +105,16 @@ export default class Model {
     this.modelGroup.add(this.lettersTop);
     this.modelGroup.add(this.rimRingGroup);
 
-    const gui = new dat.GUI();
-    var folder1 = gui.addFolder('Rotation');
-    folder1.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
-    folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
-    folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
+    // const gui = new dat.GUI();
+    // var folder1 = gui.addFolder('Rotation');
+    // folder1.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
+    // folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
+    // folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
 
-    var folder2 = gui.addFolder('Position');
-    folder2.add(this.modelGroup.position, 'x', -10, 10, 0.01);
-    folder2.add(this.modelGroup.position, 'y', -10, 10, 0.01);
-    folder2.add(this.modelGroup.position, 'z', -10, 10, 0.01);
+    // var folder2 = gui.addFolder('Position');
+    // folder2.add(this.modelGroup.position, 'x', -10, 10, 0.01);
+    // folder2.add(this.modelGroup.position, 'y', -10, 10, 0.01);
+    // folder2.add(this.modelGroup.position, 'z', -10, 10, 0.01);
 
     this.scene.add(this.modelGroup);
   }

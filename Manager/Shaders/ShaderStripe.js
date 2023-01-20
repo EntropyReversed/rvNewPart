@@ -2,9 +2,11 @@ export default {
   vertexShader: `
   precision mediump float;
 
+  precision mediump float;
+
   varying vec2 vUv;
   uniform float uTime;
-  
+
   vec3 mod289(vec3 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
   }
@@ -85,34 +87,32 @@ export default {
   
   void main() {
     vUv = uv;
-  
     vec3 pos = position;
     float noiseFreq = 3.5;
-    float noiseAmp = 0.05; 
-    vec3 noisePos = vec3(pos.x * noiseFreq + uTime, pos.y, pos.z);
-    pos.z += snoise(noisePos) * noiseAmp;
-  
+    float noiseAmp = 0.15; 
+    vec3 noisePos = vec3(pos.x, pos.y * noiseFreq + uTime, pos.z);
+    pos.z += snoise(noisePos) * noiseAmp * (uv.y);
+
     gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.);
   }
   `,
 
   fragmentShader: `
-    precision highp float;
+
+    precision mediump float;
 
     varying vec2 vUv;
-    uniform sampler2D u_texture;
-
-    uniform float opacity;
-    uniform float progress;
+    uniform float uOpacity;
+    uniform float uProgress;
 
 
     void main() {
       vec2 uv = vUv;
-      vec4 color = texture2D(u_texture, uv);
+      // vec4 color = texture2D(u_texture, uv);
       
       // uv.x += (cos(uv.x*5.+progress*8.)/60.0);
 
-      vec3 alphaMask = vec3(opacity) * (1.0-smoothstep(progress,progress+0.03,uv.y));
+      vec3 alphaMask = vec3(uOpacity) * (1.0-smoothstep(uProgress,uProgress+0.03,uv.y));
 
       gl_FragColor = vec4( vec3(1.0), alphaMask);
 

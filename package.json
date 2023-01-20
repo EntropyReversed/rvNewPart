@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "events": "^3.3.0",
-    "three": "^0.146.0"
+    "three": "^0.146.0",
+    "three-custom-shader-material": "^5.1.2"
   },
   "devDependencies": {
     "dat.gui": "^0.7.9",

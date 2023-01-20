@@ -5,8 +5,8 @@ export default [
     path: '/newModel6.glb',
   },
   // {
-  //   name: 'model',
-  //   type: 'glbModel',
-  //   path: '/rv2.glb',
+  //   name: 'displacementMap',
+  //   type: 'image',
+  //   path: '/displacementMap.jpg',
   // },
 ];

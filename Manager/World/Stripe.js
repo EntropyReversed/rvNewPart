@@ -33,9 +33,9 @@ export default class Stripe {
 
     this.stripe.material = this.material;
 
-    const gui = new dat.GUI();
-    var folder1 = gui.addFolder('progress');
-    folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
+    // const gui = new dat.GUI();
+    // var folder1 = gui.addFolder('progress');
+    // folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
   }
 
   getTimeline() {
