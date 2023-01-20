@@ -19,6 +19,7 @@ export default class Stripe {
       { u_texture: { value: null } },
       { opacity: { value: 1 } },
       { progress: { value: 0 } },
+      { uTime: { value: 0 } }
     ]);
 
     this.material = new ShaderMaterial({
@@ -41,13 +42,17 @@ export default class Stripe {
     this.timeline = gsap
       .timeline()
       .set(this.stripe.material, { depthWrite: true })
-      .set(this.material.uniforms.opacity, { value: 0.4 })
+      .set(this.material.uniforms.opacity, { value: 1 })
       .to(
         this.material.uniforms.progress,
-        { value: 1, duration: 2 },
+        { value: 0.1, duration: 2 },
         '<+=0.1'
       )
       .to(this.material.uniforms.opacity, { value: 0, duration: 1 }, '<+=1');
     return this.timeline;
+  }
+
+  updateTime() {
+    this.material.uniforms.uTime.value = this.clock.getElapsedTime();
   }
 }

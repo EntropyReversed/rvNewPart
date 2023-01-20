@@ -52,6 +52,8 @@ export default class Manager {
     this.stats.update();
 
     this.world.model.gradientCircle.updateTime();
+    this.world.model.stripe.updateTime();
+    // this.world.model.testVertex.update();
 
     if (this.pause) return;
     window.requestAnimationFrame(() => this.update());

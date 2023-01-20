@@ -9,13 +9,13 @@ export const animateText = (
     .fromTo(
       selector,
       { opacity: 0 },
-      { opacity: 1, duration: 0.1, ease: 'power3.out' },
+      { opacity: 1, duration: 0.3 },
       firstDelay
     )
     .fromTo(
       selector,
       { scale: 0.95 },
-      { scale: 1, duration: 0.2, ease: 'power3.out' },
+      { scale: 1, duration: 0.4 },
       secondDelay
     )
     .to({}, { duration: 0.05 })

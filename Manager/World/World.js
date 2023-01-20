@@ -59,7 +59,7 @@ export default class World {
       .add(edgeTimeline, '-=1.5')
       .add(cameraTimeline2, '-=1.2')
       .add(modelPiecesTimeline)
-      .add(modelTimeline3)
+      .add(modelTimeline3, "-=1")
       .add(stripeTimeline, "<+=2");
 
     this.scrollTrigger = new TriggerScroll(this.manager);

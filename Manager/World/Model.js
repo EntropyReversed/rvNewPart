@@ -9,6 +9,7 @@ import Stripe from '../../Manager/World/Stripe';
 
 import * as dat from 'dat.gui';
 import { animateText } from '../../Manager/Utils/animateText';
+import TestVertex from '../../Manager/World/TestVertex';
 
 export default class Model {
   constructor(manager) {
@@ -93,6 +94,8 @@ export default class Model {
       this.mainColor
     );
 
+    // this.testVertex = new TestVertex(this.manager, this.modelGroup);
+
     this.stripe = new Stripe(this.manager, this.stripeMesh);
 
     this.modelGroup.add(this.stripeMesh);
@@ -160,18 +163,18 @@ export default class Model {
         { x: 0, z: 0.5, duration: 0.4, ease: 'power3.out' },
         '<+0.2'
       )
-      .to(this.lettersTop.material, { opacity: 0.3 })
-      
-      animateText(this.timeline2, ".secondTitle")
+      .to(this.lettersTop.material, { opacity: 0.3 });
 
-      this.timeline2.to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
+    animateText(this.timeline2, '.secondTitle');
+
+    this.timeline2.to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
 
     this.timeline3 = gsap
       .timeline()
       .to(this.circle.position, { z: 0.2, duration: 0.4 })
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
-      .to(this.modelGroup.position, { x: -2.09, duration: 2 }, '<')
+      .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
       .to(this.modelGroup.rotation, { z: -1.6, duration: 4 });
   }
 }
