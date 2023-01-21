@@ -2,7 +2,6 @@ export default {
   vertexShader: `
   precision mediump float;
 
-  precision mediump float;
 
   varying vec2 vUv;
   uniform float uTime;
