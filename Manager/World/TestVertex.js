@@ -115,7 +115,7 @@ export default class TestVertex {
     };
 
     this.material = shaderStripe(uniforms);
-    this.material.depthWrite = false
+    this.material.depthWrite = false;
 
     this.plane = new Mesh(this.planeGeo, this.material);
 
@@ -123,7 +123,7 @@ export default class TestVertex {
     this.plane.rotation.setFromVector3(new Euler(-1.62, -0.57, -4.85));
     this.plane.scale.set(0.1, 0.2, 0.2);
 
-    // const gui = new dat.GUI();
+    const gui = new dat.GUI();
     // var folder1 = gui.addFolder('progress');
     // folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
 
@@ -136,6 +136,11 @@ export default class TestVertex {
     // folder3.add(this.plane.scale, 'x', 0, 2, 0.01);
     // folder3.add(this.plane.scale, 'y', 0, 2, 0.01);
     // folder3.add(this.plane.scale, 'z', 0, 2, 0.01);
+
+    // var folder3 = gui.addFolder('position');
+    // folder3.add(this.plane.position, 'x', -4, 4, 0.01);
+    // folder3.add(this.plane.position, 'y', -4, 4, 0.01);
+    // folder3.add(this.plane.position, 'z', -4, 4, 0.01);
 
     this.group.add(this.plane);
   }
