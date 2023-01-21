@@ -8,7 +8,6 @@ export default class Stripe {
   constructor(manager, stripe) {
     this.manager = manager;
     this.stripe = stripe;
-    this.texture = this.manager.world.textures.gradientTexture;
     this.setUp();
   }
 
@@ -16,9 +15,8 @@ export default class Stripe {
     this.clock = new Clock();
 
     this.uniforms = UniformsUtils.merge([
-      { u_texture: { value: null } },
-      { opacity: { value: 1 } },
-      { progress: { value: 0 } },
+      { uOpacity: { value: 1 } },
+      { uProgress: { value: 0 } },
       { uTime: { value: 0 } }
     ]);
 
@@ -28,8 +26,6 @@ export default class Stripe {
       transparent: true,
     });
     this.material.depthWrite = false;
-
-    this.material.uniforms.u_texture.value = this.texture;
 
     this.stripe.material = this.material;
 
