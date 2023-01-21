@@ -96,9 +96,9 @@ export default class Model {
 
     this.testVertex = new TestVertex(this.manager, this.modelGroup);
 
-    this.stripe = new Stripe(this.manager, this.stripeMesh);
+    // this.stripe = new Stripe(this.manager, this.stripeMesh);
 
-    this.modelGroup.add(this.stripeMesh);
+    // this.modelGroup.add(this.stripeMesh);
     this.modelGroup.add(this.circleBottom);
     this.modelGroup.add(this.circle);
     this.modelGroup.add(this.letters);
