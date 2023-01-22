@@ -9,7 +9,7 @@ import Stripe from '../../Manager/World/Stripe';
 
 import * as dat from 'dat.gui';
 import { animateText } from '../../Manager/Utils/animateText';
-import TestVertex from '../../Manager/World/TestVertex';
+import FusedModel from '../../Manager/World/FusedModel';
 
 export default class Model {
   constructor(manager) {
@@ -31,6 +31,7 @@ export default class Model {
     this.mainMaterial = new MeshStandardMaterial();
     this.rimRingGroup = new Group();
     this.modelGroup = new Group();
+    this.modelInnerGroup = new Group();
     this.pieces = [];
 
     const actions = {
@@ -66,6 +67,9 @@ export default class Model {
       Piece: (child) => {
         this.pieces.push(child);
       },
+      fused: (child) => {
+        this.fused = child;
+      },
     };
 
     this.model.scene.traverse((child) => {
@@ -94,16 +98,17 @@ export default class Model {
       this.mainColor
     );
 
-    this.testVertex = new TestVertex(this.manager, this.modelGroup);
+    this.stripe = new Stripe(this.manager, this.stripeMesh, this.modelGroup);
+    this.fusedModel = new FusedModel(this.manager, this.fused);
 
-    // this.stripe = new Stripe(this.manager, this.stripeMesh);
-
-    // this.modelGroup.add(this.stripeMesh);
-    this.modelGroup.add(this.circleBottom);
-    this.modelGroup.add(this.circle);
-    this.modelGroup.add(this.letters);
-    this.modelGroup.add(this.lettersTop);
-    this.modelGroup.add(this.rimRingGroup);
+    this.modelInnerGroup.add(this.circleBottom);
+    this.modelInnerGroup.add(this.circle);
+    this.modelInnerGroup.add(this.letters);
+    this.modelInnerGroup.add(this.lettersTop);
+    this.modelInnerGroup.add(this.rimRingGroup);
+    this.modelInnerGroup.add(this.fused);
+    this.modelGroup.add(this.modelInnerGroup);
+    this.modelGroup.add(this.stripeMesh);
 
     // const gui = new dat.GUI();
     // var folder1 = gui.addFolder('Rotation');
@@ -175,6 +180,6 @@ export default class Model {
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
       .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
-      .to(this.modelGroup.rotation, { z: 1.6, duration: 4 });
+      .to(this.modelInnerGroup.rotation, { z: 1.6, duration: 6 });
   }
 }

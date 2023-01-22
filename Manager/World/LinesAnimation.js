@@ -1,108 +1,7 @@
-import {
-  Vector3,
-  Color,
-  Mesh,
-  Group,
-  LineBasicMaterial,
-  ShaderMaterial,
-  PlaneGeometry,
-  UniformsUtils,
-} from 'three';
+import { Vector3, Color, Group } from 'three';
 import gsap from 'gsap';
-import ShaderCircles from './../Shaders/ShaderCircles.js';
-
-const lineMaterial = new LineBasicMaterial();
-
-class AnimatableCircle {
-  constructor(r, w, pos, op) {
-    this.radius = r + w;
-    this.strokeW = w;
-    this.pos = pos;
-    this.opacity = op;
-    this.setUpShader();
-    this.circle = this.createCircle();
-  }
-
-  setUpShader() {
-    this.uniforms = UniformsUtils.merge([
-      { opacity: { value: this.opacity } },
-      { strokeWidth: { value: this.strokeW } },
-      { progress: { value: 0 } },
-      { mainCircle: { value: false } },
-    ]);
-
-    this.circleMaterial = new ShaderMaterial({
-      uniforms: this.uniforms,
-      ...ShaderCircles,
-      transparent: true,
-      depthWrite: false,
-    });
-  }
-
-  createCircle() {
-    const geometry = new PlaneGeometry(this.radius * 2, this.radius * 2);
-
-    const mesh = new Mesh(geometry, this.circleMaterial);
-
-    mesh.userData = {
-      radius: this.radius,
-      width: this.radius + this.strokeW,
-    };
-    mesh.position.set(this.pos.x, this.pos.y, this.pos.z);
-    mesh.scale.x = -1;
-    mesh.rotation.z = Math.PI * 1.5;
-    return mesh;
-  }
-}
-
-class AnimatableLine {
-  constructor(w, h, pos, ang, org, c) {
-    this.w = w;
-    this.h = h;
-    this.pos = pos;
-    this.ang = ang;
-    this.org = org;
-    this.c = c;
-    this.line = this.createLine();
-  }
-
-  createLine() {
-    let offset, position;
-    if (this.org === 'top') {
-      offset = new Vector3(-this.w * 0.5, 0, 0);
-      position = new Vector3(this.pos.x, this.pos.y + this.w * 0.5, this.pos.z);
-    }
-    if (this.org === 'btm') {
-      offset = new Vector3(this.w * 0.5, 0, 0);
-      position = new Vector3(
-        this.pos.x,
-        (this.pos.y + this.w * 0.5) * -1,
-        this.pos.z
-      );
-    }
-    if (this.org === 'left') {
-      offset = new Vector3(this.w * 0.5, 0, 0);
-      position = new Vector3(this.pos.x - this.w * 0.5, this.pos.y, this.pos.z);
-    }
-    if (this.org === 'right') {
-      offset = new Vector3(-this.w * 0.5, 0, 0);
-      position = new Vector3(this.pos.x + this.w * 0.5, this.pos.y, this.pos.z);
-    }
-    if (this.org === '') {
-      offset = new Vector3(0, 0, 0);
-      position = new Vector3(this.pos.x, this.pos.y, this.pos.z);
-    }
-
-    const geometry = new PlaneGeometry(this.w, this.h);
-    geometry.translate(...offset);
-    const material = lineMaterial.clone();
-    material.color = this.c;
-    const mesh = new Mesh(geometry, material);
-    mesh.position.set(...position);
-    mesh.rotation.set(0, 0, this.ang);
-    return mesh;
-  }
-}
+import AnimatableLine from '../../Manager/World/AnimatableLine';
+import AnimatableCircle from '../../Manager/World/AnimatableCircle';
 
 export default class LinesAnimation {
   constructor(scene) {
@@ -290,7 +189,7 @@ export default class LinesAnimation {
     this.circleMain = new AnimatableCircle(
       this.r - this.g,
       this.w * 1.8,
-      new Vector3(0, 0, 0.0014),
+      new Vector3(0, 0, 0.0015),
       1
     );
     this.circleMain.circleMaterial.uniforms.mainCircle.value = true;
