@@ -56,7 +56,7 @@ const shaderStripe = (uniforms) => {
       main: `
         vUv =  uv;
         vec3 displacedPosition = position + normal * displace(position);
-        float offset = 0.01;
+        float offset = 0.03;
         vec3 tangent = orthogonal(normal);
         vec3 bitangent = normalize(cross(normal, tangent));
         vec3 neighbour1 = position + tangent * offset;
@@ -124,8 +124,8 @@ export default class TestVertex {
     this.plane.scale.set(0.1, 0.2, 0.2);
 
     const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('progress');
-    // folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
+    var folder1 = gui.addFolder('progress');
+    folder1.add(this.material.uniforms.progress, 'value', 0, 1, 0.01);
 
     // var folder2 = gui.addFolder('rot');
     // folder2.add(this.plane.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
