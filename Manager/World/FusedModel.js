@@ -1,22 +1,40 @@
+import { Color } from "three";
+import { shaderFused } from "../../Manager/Shaders/shaderFused";
+import * as dat from 'dat.gui';
+
 export default class FusedModel {
   constructor(manager, model) {
     this.manager = manager;
     this.model = model;
     this.setUp();
-    console.log(this.manager.world);
   }
 
   setUp() {
-    this.model.material.metalness = 0.97;
-    this.model.material.roughness = 0.1;
-    this.model.material.transparent = true;
-    this.model.material.opacity = 0;
+    const uniforms = {
+      diffuse: { value: new Color('#C0C0C0') },
+      roughness: { value: 0.05 },
+      progress: { value: -0.05 },
+    };
 
-    this.model.receiveShadow = false;
-    this.model.castShadow = false;
-    this.model.material.depthWrite = false;
+    this.material = shaderFused(uniforms);
+    this.material.depthWrite = true;
 
-    this.model.material.needsUpdate = true;
+    this.model.material = this.material;
+
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('stripe');
+    folder1.add(this.material.uniforms.progress, 'value', -0.1, 1, 0.001);
+
+    // this.model.material.metalness = 0.97;
+    // this.model.material.roughness = 0.1;
+    // this.model.material.transparent = true;
+    // this.model.material.opacity = 0;
+
+    // this.model.receiveShadow = false;
+    // this.model.castShadow = false;
+    // this.model.material.depthWrite = false;
+
+    // this.model.material.needsUpdate = true;
 
   }
 }

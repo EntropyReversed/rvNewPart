@@ -69,7 +69,6 @@ export default class Model {
       },
       fused: (child) => {
         this.fused = child;
-        this.setModelPart(child);
       },
     };
 
