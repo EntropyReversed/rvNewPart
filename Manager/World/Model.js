@@ -111,11 +111,6 @@ export default class Model {
     this.modelGroup.add(this.stripeMesh);
 
     // const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('Rotation');
-    // folder1.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
-    // folder1.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
-    // folder1.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
-
     // var folder2 = gui.addFolder('Position');
     // folder2.add(this.modelGroup.position, 'x', -10, 10, 0.01);
     // folder2.add(this.modelGroup.position, 'y', -10, 10, 0.01);
@@ -178,13 +173,12 @@ export default class Model {
       .timeline()
       .to(this.circle.position, { z: 0.2, duration: 0.4 })
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
-      .set(this.fused.material, { depthWrite: true })
+      // .set(this.fused.material, { depthWrite: true })
       .set(this.fused.material, { opacity: 1 })
-      .set(this.circle.material, { opacity: 0 }, "<")
-      .set(this.letters.material, { opacity: 0 }, "<")
-      .set(this.lettersTop.material, { opacity: 0 }, "<")
+
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
       .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
-      .to(this.modelInnerGroup.rotation, { z: 1.6, duration: 6 });
+      .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
+      .to(this.modelGroup.position, { x: -0.5, duration: 3 }, '<');
   }
 }
