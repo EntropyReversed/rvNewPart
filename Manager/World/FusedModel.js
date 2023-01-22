@@ -2,7 +2,7 @@ export default class FusedModel {
   constructor(manager, model) {
     this.manager = manager;
     this.model = model;
-
+console.log(model)
     this.setUp()
   }
 
@@ -18,6 +18,7 @@ export default class FusedModel {
       c.material.depthWrite = false;
       
       c.material.needsUpdate = true;
+      console.log(c.material)
       // c.visible = false;
     });
   }

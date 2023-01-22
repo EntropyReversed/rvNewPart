@@ -21,7 +21,6 @@ export default class Paint {
     };
 
     this.material = shaderPaint(uniforms);
-    this.material.depthWrite = false;
 
     this.plane = new Mesh(this.planeGeo, this.material);
 

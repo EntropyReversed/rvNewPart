@@ -77,7 +77,7 @@ export const shaderPaint = (uniforms) => {
         varying vec2 vUv;
       `,
       '#include <dithering_fragment>': `
-        float alphaM = smoothstep(0.0,0.3, vUv.y) - smoothstep(progress,progress+0.1, vUv.y);
+        float alphaM = smoothstep(0.0,0.2, vUv.y) - smoothstep(progress,progress+0.1, vUv.y);
         gl_FragColor.a = alphaM * progress; 
       `,
     }),
