@@ -2,8 +2,7 @@ export default class FusedModel {
   constructor(manager, model) {
     this.manager = manager;
     this.model = model;
-console.log(model)
-    this.setUp()
+    this.setUp();
   }
 
   setUp() {
@@ -16,10 +15,9 @@ console.log(model)
       c.receiveShadow = false;
       c.castShadow = false;
       c.material.depthWrite = false;
-      
+
       c.material.needsUpdate = true;
-      console.log(c.material)
-      // c.visible = false;
+      c.visible = false;
     });
   }
 }

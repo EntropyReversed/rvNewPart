@@ -29,12 +29,14 @@ export default class Stripe {
     // var folder1 = gui.addFolder('stripe');
     // folder1.add(this.material.uniforms.progress, 'value', -0.1, 1, 0.001);
     // folder1.add(this.paint.material.uniforms.progress, 'value', -0.1, 1, 0.001);
+    console.log(this.manager.world.model)
   }
 
   getTimeline() {
     this.timeline = gsap
       .timeline()
       .set(this.material, { depthWrite: true })
+      // .set()
       .to(
         this.paint.material.uniforms.progress,
         { value: 1, duration: 2 },
