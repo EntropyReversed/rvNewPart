@@ -3,21 +3,20 @@ export default class FusedModel {
     this.manager = manager;
     this.model = model;
     this.setUp();
+    console.log(this.manager.world);
   }
 
   setUp() {
-    this.model.children.forEach((c) => {
-      c.material.metalness = 0.97;
-      c.material.roughness = 0.1;
-      c.material.transparent = true;
-      c.material.opacity = 0;
+    this.model.material.metalness = 0.97;
+    this.model.material.roughness = 0.1;
+    this.model.material.transparent = true;
+    this.model.material.opacity = 0;
 
-      c.receiveShadow = false;
-      c.castShadow = false;
-      c.material.depthWrite = false;
+    this.model.receiveShadow = false;
+    this.model.castShadow = false;
+    this.model.material.depthWrite = false;
 
-      c.material.needsUpdate = true;
-      c.visible = false;
-    });
+    this.model.material.needsUpdate = true;
+
   }
 }

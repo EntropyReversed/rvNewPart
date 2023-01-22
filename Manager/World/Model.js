@@ -69,6 +69,7 @@ export default class Model {
       },
       fused: (child) => {
         this.fused = child;
+        this.setModelPart(child);
       },
     };
 
@@ -178,6 +179,11 @@ export default class Model {
       .timeline()
       .to(this.circle.position, { z: 0.2, duration: 0.4 })
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
+      .set(this.fused.material, { depthWrite: true })
+      .set(this.fused.material, { opacity: 1 })
+      .set(this.circle.material, { opacity: 0 }, "<")
+      .set(this.letters.material, { opacity: 0 }, "<")
+      .set(this.lettersTop.material, { opacity: 0 }, "<")
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 2 })
       .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
       .to(this.modelInnerGroup.rotation, { z: 1.6, duration: 6 });
