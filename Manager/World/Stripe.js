@@ -18,12 +18,13 @@ export default class Stripe {
     this.stripe.rotation.z = 3.29;
     this.stripe.scale.set(1.001,1.001,0.98);
     const uniforms = {
-      diffuse: { value: new Color('#C0C0C0') },
+      diffuse: { value: new Color('rgb(80,80,80)') },
       progress: { value: -0.05 },
     };
 
     this.material = shaderStripe(uniforms);
     this.material.depthWrite = false;
+    this.stripe.visible = false
 
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
@@ -36,7 +37,7 @@ export default class Stripe {
   getTimeline() {
     this.timeline = gsap
       .timeline()
-      .set(this.material, { depthWrite: true })
+      .set(this.stripe, { visible: true })
       // .set()
       .to(
         this.paint.material.uniforms.progress,

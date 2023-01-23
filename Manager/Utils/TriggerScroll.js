@@ -18,7 +18,7 @@ export default class TriggerScroll {
           immediateRender: false,
           invalidateOnRefresh: true,
           pin: true,
-          end: '+=18000',
+          end: '+=19000',
         },
         onUpdate: () => {
           if (this.manager.pause) {

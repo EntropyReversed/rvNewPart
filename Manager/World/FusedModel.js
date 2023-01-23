@@ -11,7 +11,7 @@ export default class FusedModel {
 
   setUp() {
     const uniforms = {
-      diffuse: { value: new Color('#C0C0C0') },
+      diffuse: { value: new Color('rgb(80,80,80)') },
       roughness: { value: 0.05 },
       progress: { value: -0.05 },
     };

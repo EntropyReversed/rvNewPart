@@ -11,7 +11,7 @@ export default class Paint {
     this.planeGeo = new PlaneGeometry(2, 4, 40, 80);
 
     const uniforms = {
-      diffuse: { value: new Color('#C0C0C0') },
+      diffuse: { value: new Color('rgb(80,80,80)') },
       roughness: { value: 0.05 },
       amplitude: { value: 0.4 },
       speed: { value: 0.15 },
