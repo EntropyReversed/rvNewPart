@@ -46,7 +46,7 @@ export const shaderPaint = (uniforms) => {
       main: `
         vUv =  uv;
         vec3 displacedPosition = position + normal * displace(position);
-        float offset = 0.01;
+        float offset = 0.1;
         vec3 tangent = orthogonal(normal);
         vec3 bitangent = normalize(cross(normal, tangent));
         vec3 neighbour1 = position + tangent * offset;

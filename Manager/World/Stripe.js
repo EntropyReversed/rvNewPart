@@ -24,8 +24,8 @@ export default class Stripe {
 
     this.material = shaderStripe(uniforms);
     this.material.depthWrite = false;
-    this.stripe.visible = false
-
+    this.stripe.visible = false;
+    this.stripe.castShadow = true;
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
     // var folder1 = gui.addFolder('stripe');

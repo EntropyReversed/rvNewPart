@@ -8,7 +8,7 @@ export default class Paint {
     this.group = group;
 
     this.clock = new Clock();
-    this.planeGeo = new PlaneGeometry(2, 4, 40, 80);
+    this.planeGeo = new PlaneGeometry(2, 4, 20, 60);
 
     const uniforms = {
       diffuse: { value: new Color('rgb(80,80,80)') },
@@ -22,21 +22,21 @@ export default class Paint {
 
     this.material = shaderPaint(uniforms);
     this.material.depthWrite = false;
-
+    // this.material.wireframe = true;
     this.plane = new Mesh(this.planeGeo, this.material);
 
     this.plane.position.set(0.137, 2.348, 0.11);
     this.plane.rotation.setFromVector3(new Euler(-1.573, -0.49, -4.708));
     this.plane.scale.set(0.099, 0.2, 0.2);
 
-    // const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('paint');
-    // folder1.add(this.plane.rotation, 'x', -6, 6, 0.001);
-    // folder1.add(this.plane.rotation, 'y', -6, 6, 0.001);
-    // folder1.add(this.plane.rotation, 'z', -6, 6, 0.001);
-    // folder1.add(this.plane.position, 'x', -12, 12, 0.001);
-    // folder1.add(this.plane.position, 'y', -12, 12, 0.001);
-    // folder1.add(this.plane.position, 'z', -12, 12, 0.001);
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('paint');
+    folder1.add(this.plane.rotation, 'x', -6, 6, 0.001);
+    folder1.add(this.plane.rotation, 'y', -6, 6, 0.001);
+    folder1.add(this.plane.rotation, 'z', -6, 6, 0.001);
+    folder1.add(this.plane.position, 'x', -12, 12, 0.001);
+    folder1.add(this.plane.position, 'y', -12, 12, 0.001);
+    folder1.add(this.plane.position, 'z', -12, 12, 0.001);
     // var folder2 = gui.addFolder('rot');
     // folder2.add(this.plane.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
     // folder2.add(this.plane.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
