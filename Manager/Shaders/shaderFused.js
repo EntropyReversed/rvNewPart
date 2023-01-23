@@ -36,8 +36,9 @@ export const shaderFused = (uniforms) => {
         varying vec2 vUv;
       `,
       '#include <dithering_fragment>': `
+        // vUv.x += (cos(vUv.y*5.+progress*4.)/20.0);
         float alphaM = 1.0 - smoothstep(progress,progress+0.05, vUv.y);
-        gl_FragColor.a = alphaM * cos(vUv.x); 
+        gl_FragColor.a = alphaM; 
       `,
     }),
   });
