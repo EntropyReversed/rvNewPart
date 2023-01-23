@@ -27,7 +27,7 @@ export default class Paint {
 
     this.plane.position.set(0.137, 2.345, 0.11);
     this.plane.rotation.setFromVector3(new Euler(-1.573, -0.49, -4.708));
-    this.plane.scale.set(0.1, 0.2, 0.2);
+    this.plane.scale.set(0.099, 0.2, 0.2);
 
     const gui = new dat.GUI();
     var folder1 = gui.addFolder('paint');
