@@ -15,8 +15,8 @@ export default class Stripe {
   }
 
   setUp() {
-    this.stripe.rotation.z = 0.1;
-    this.stripe.scale.z = 0.98;
+    this.stripe.rotation.z = 3.29;
+    this.stripe.scale.set(1.001,1.001,0.98);
     const uniforms = {
       diffuse: { value: new Color('#C0C0C0') },
       progress: { value: -0.05 },
@@ -28,6 +28,7 @@ export default class Stripe {
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
     // var folder1 = gui.addFolder('stripe');
+    // folder1.add(this.stripe.rotation, 'z', -4, 4, 0.001);
     // folder1.add(this.material.uniforms.progress, 'value', -0.1, 1, 0.001);
     // folder1.add(this.paint.material.uniforms.progress, 'value', -0.1, 1, 0.001);
   }
@@ -45,8 +46,8 @@ export default class Stripe {
       .to(this.material.uniforms.progress, { value: 1, duration: 6 }, '-=0.55')
       .to(
         this.paint.material.uniforms.progress,
-        { value: -0.05, duration: 2 },
-        '-=1'
+        { value: 0, duration: 2 },
+        '-=1.2'
       );
     return this.timeline;
   }

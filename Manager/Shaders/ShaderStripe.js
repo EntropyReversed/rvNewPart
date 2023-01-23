@@ -36,7 +36,7 @@ export const shaderStripe = (uniforms) => {
         varying vec2 vUv;
       `,
       '#include <dithering_fragment>': `
-        float alphaM = 1.0 - smoothstep(progress,progress+0.05, vUv.y);
+        float alphaM = 1.0 - smoothstep(progress,progress+0.05, 1.0-vUv.x);
         gl_FragColor.a = alphaM; 
       `,
     }),

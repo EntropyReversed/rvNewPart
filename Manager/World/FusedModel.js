@@ -22,10 +22,10 @@ export default class FusedModel {
     this.model.material = this.material;
     this.model.renderOrder = 1
 
-    const gui = new dat.GUI();
-    var folder1 = gui.addFolder('stripe');
-    folder1.add(this.material.uniforms.progress, 'value', -0.1, 1, 0.001);
-    folder1.add(this.model.position, 'z', -1, 1, 0.001);
+    // const gui = new dat.GUI();
+    // var folder1 = gui.addFolder('stripe');
+    // folder1.add(this.material.uniforms.progress, 'value', -0.1, 1, 0.001);
+    // folder1.add(this.model.position, 'z', -1, 1, 0.001);
 
     // this.model.material.metalness = 0.97;
     // this.model.material.roughness = 0.1;
