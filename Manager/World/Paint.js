@@ -19,7 +19,7 @@ export default class Paint {
       time: { value: 0 },
       progress: { value: 0 },
     };
-
+    console.log(group)
     this.material = shaderPaint(uniforms);
     this.material.depthWrite = false;
     // this.material.wireframe = true;

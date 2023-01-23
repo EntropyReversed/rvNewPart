@@ -10,22 +10,23 @@ export default class Stripe {
     this.manager = manager;
     this.stripe = stripe;
     this.group = group;
+    console.log(group);
     this.paint = new Paint(this.manager, this.group);
     this.setUp();
   }
 
   setUp() {
     this.stripe.rotation.z = 3.29;
-    this.stripe.scale.set(1.001,1.001,0.98);
+    this.stripe.scale.set(1.001, 1.001, 0.98);
     const uniforms = {
-      diffuse: { value: new Color('rgb(80,80,80)') },
+      diffuse: { value: new Color('rgb(70,70,70)') },
       progress: { value: -0.05 },
     };
 
     this.material = shaderStripe(uniforms);
     this.material.depthWrite = false;
     this.stripe.visible = false;
-    this.stripe.castShadow = true;
+
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
     // var folder1 = gui.addFolder('stripe');

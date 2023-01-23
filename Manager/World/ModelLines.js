@@ -65,7 +65,9 @@ export default class ModelLines {
     });
 
     this.lines.forEach((line) => {
-      this.timeline.set(line, { visible: false }, '-=0.5');
+      this.timeline
+        .set(line, { visible: false })
+        .set(line.material, { depthWrite: false });
     });
 
     return this.timeline;

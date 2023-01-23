@@ -58,6 +58,7 @@ export default class Model {
       },
       ring: (child) => {
         this.mLines = child;
+        this.mLines.visible = false;
       },
       rim: (child) => {
         this.edge = child;

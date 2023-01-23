@@ -6,7 +6,7 @@ export const shaderPaint = (uniforms) => {
   const material = new ShaderMaterial({
     lights: true,
     transparent: true,
-    side: DoubleSide,
+
     extensions: {
       derivatives: true,
     },
@@ -46,7 +46,7 @@ export const shaderPaint = (uniforms) => {
       main: `
         vUv =  uv;
         vec3 displacedPosition = position + normal * displace(position);
-        float offset = 0.1;
+        float offset = 0.01;
         vec3 tangent = orthogonal(normal);
         vec3 bitangent = normalize(cross(normal, tangent));
         vec3 neighbour1 = position + tangent * offset;

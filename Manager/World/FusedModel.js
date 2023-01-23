@@ -1,5 +1,5 @@
-import { Color } from "three";
-import { shaderFused } from "../../Manager/Shaders/shaderFused";
+import { Color } from 'three';
+import { shaderFused } from '../../Manager/Shaders/shaderFused';
 import * as dat from 'dat.gui';
 
 export default class FusedModel {
@@ -11,7 +11,7 @@ export default class FusedModel {
 
   setUp() {
     const uniforms = {
-      diffuse: { value: new Color('rgb(80,80,80)') },
+      diffuse: { value: new Color('rgb(70,70,70)') },
       roughness: { value: 0.05 },
       progress: { value: -0.05 },
     };
@@ -20,7 +20,7 @@ export default class FusedModel {
     this.material.depthWrite = false;
 
     this.model.material = this.material;
-    this.model.renderOrder = 1
+    this.model.renderOrder = 1;
 
     // const gui = new dat.GUI();
     // var folder1 = gui.addFolder('stripe');
@@ -37,6 +37,5 @@ export default class FusedModel {
     // this.model.material.depthWrite = false;
 
     // this.model.material.needsUpdate = true;
-
   }
 }
