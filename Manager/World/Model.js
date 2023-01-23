@@ -42,6 +42,7 @@ export default class Model {
       CircleBottom: (child) => {
         this.circleBottom = child;
         this.setModelPart(child);
+        this.circleBottom.material.metalness = 0.97;
       },
       Strip: (child) => {
         this.stripeMesh = child;
@@ -112,9 +113,27 @@ export default class Model {
 
     const gui = new dat.GUI();
     var folder2 = gui.addFolder('Rotation');
-    folder2.add(this.circleBottom.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
-    folder2.add(this.circleBottom.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
-    folder2.add(this.circleBottom.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder2.add(
+      this.circleBottom.rotation,
+      'x',
+      -Math.PI * 2,
+      Math.PI * 2,
+      0.01
+    );
+    folder2.add(
+      this.circleBottom.rotation,
+      'y',
+      -Math.PI * 2,
+      Math.PI * 2,
+      0.01
+    );
+    folder2.add(
+      this.circleBottom.rotation,
+      'z',
+      -Math.PI * 2,
+      Math.PI * 2,
+      0.01
+    );
 
     var folder3 = gui.addFolder('Position');
     folder3.add(this.circleBottom.position, 'x', -10, 10, 0.01);
@@ -178,7 +197,8 @@ export default class Model {
       .timeline()
       .to(this.circle.position, { z: 0.2, duration: 0.4 })
       .to(this.letters.material, { opacity: 0, duration: 0.4 }, '<')
-      .set(this.circleBottom.material, { opacity: 1})
+      .set(this.circleBottom.material, { opacity: 1 })
+      .set(this.lettersTop.scale, { z: 1 })
       .set(this.fused.material, { depthWrite: true })
       .set(this.fused.material, { opacity: 1 })
 
@@ -186,8 +206,8 @@ export default class Model {
       .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
       .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
       .to(this.modelGroup.rotation, { y: -0.07, duration: 2 })
-      .to(this.modelGroup.position, { x: 0.77, duration: 2 }, "<")
-      .to(this.fused.material.uniforms.progress, {value: 1, duration: 8})
-      .to(this.modelGroup.rotation, { x: 5.22, y: -0.7, duration: 6 }, "<")
+      .to(this.modelGroup.position, { x: 0.77, duration: 2 }, '<')
+      .to(this.fused.material.uniforms.progress, { value: 0.6, duration: 5 })
+      .to(this.modelGroup.rotation, { x: 5.22, duration: 4 }, '<');
   }
 }

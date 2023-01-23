@@ -135,7 +135,7 @@ export default class GradientCircle {
       .to(
         this.model.letters.position,
         {
-          z: -0.2,
+          z: -0.18,
           duration: 0.1,
           // onReverseComplete: () => {
           //   if (this.manager.pause) {
