@@ -163,11 +163,6 @@ footer {
   margin-left: 0;
 }
 
-.scene h2.thirdTitle,
-.scene h2.fifthTitle {
-  top: 20%;
-}
-
 .scene h2 .btm .word:last-of-type {
   font-style: italic;
 }

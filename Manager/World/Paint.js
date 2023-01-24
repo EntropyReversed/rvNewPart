@@ -11,15 +11,15 @@ export default class Paint {
     this.planeGeo = new PlaneGeometry(2, 4, 20, 60);
 
     const uniforms = {
-      diffuse: { value: new Color('rgb(80,80,80)') },
-      roughness: { value: 0.05 },
+      diffuse: { value: new Color('rgb(255,255,255)') },
+      roughness: { value: 0.5 },
       amplitude: { value: 0.4 },
       speed: { value: 0.15 },
       frequency: { value: 0.6 },
       time: { value: 0 },
       progress: { value: 0 },
     };
-    console.log(group)
+
     this.material = shaderPaint(uniforms);
     this.material.depthWrite = false;
     // this.material.wireframe = true;

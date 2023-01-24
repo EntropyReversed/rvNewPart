@@ -9,10 +9,11 @@ export default class FusedModel {
     this.setUp();
   }
 
-  setUp() {
+  setUp() {				
     const uniforms = {
-      diffuse: { value: new Color('rgb(70,70,70)') },
-      roughness: { value: 0.05 },
+      diffuse: { value: new Color('rgb(255,255,255)') },
+      roughness: { value: 0.5 },
+      metalness: { value: 1 },					
       progress: { value: -0.05 },
     };
 
