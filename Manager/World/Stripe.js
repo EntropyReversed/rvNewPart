@@ -1,4 +1,4 @@
-import { Color } from 'three';
+import { Color, Clock } from 'three';
 import gsap from 'gsap';
 
 import * as dat from 'dat.gui';
@@ -11,23 +11,36 @@ export default class Stripe {
     this.stripe = stripe;
     this.group = group;
     console.log(group);
-    this.paint = new Paint(this.manager, this.group);
+    // this.paint = new Paint(this.manager, this.group);
     this.setUp();
   }
 
   setUp() {
-    this.stripe.rotation.z = 3.29;
+    this.clock = new Clock();
+    this.stripe.rotation.z = 0.037;
     this.stripe.scale.set(1.001, 1.001, 0.98);
     const uniforms = {
       diffuse: { value: new Color('rgb(255,255,255)') },
-      progress: { value: -0.05 },
       roughness: { value: 0.3 },
-      metalness: { value: 0.97 },
+      metalness: { value: 0.9 },	
+      amplitude: { value: 0.06 },
+      speed: { value: 0.2 },
+      frequency: { value: 4 },
+      offset: { value: 0.1 },
+      time: { value: 0 },
+      progress: { value: -0.05 },
     };
+
+    // const uniforms = {
+    //   diffuse: { value: new Color('rgb(255,255,255)') },
+    //   progress: { value: -0.05 },
+    //   roughness: { value: 0.3 },
+    //   metalness: { value: 0.97 },
+    // };
 
     this.material = shaderStripe(uniforms);
     this.material.depthWrite = false;
-    this.stripe.visible = false;
+    this.stripe.visible = true;
 
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
@@ -42,21 +55,22 @@ export default class Stripe {
       .timeline()
       .set(this.stripe, { visible: true })
       // .set()
-      .to(
-        this.paint.material.uniforms.progress,
-        { value: 1, duration: 2 },
-        '<+=0.1'
-      )
-      .to(this.material.uniforms.progress, { value: 1, duration: 6 }, '-=0.55')
-      .to(
-        this.paint.material.uniforms.progress,
-        { value: 0, duration: 2 },
-        '+=1.2'
-      );
+      // .to(
+      //   this.paint.material.uniforms.progress,
+      //   { value: 1, duration: 2 },
+      //   '<+=0.1'
+      // )
+      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 })
+      // .to(
+      //   this.paint.material.uniforms.progress,
+      //   { value: 0, duration: 2 },
+      //   '+=1.2'
+      // );
     return this.timeline;
   }
 
   updateTime() {
-    this.paint.update();
+    // this.paint.update();
+    this.material.uniforms.time.value = this.clock.getElapsedTime();
   }
 }
