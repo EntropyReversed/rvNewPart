@@ -188,16 +188,16 @@ export default class Model {
       .set(this.fused.material, { opacity: 1 })
 
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 3 })
-      .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
-      .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
+      .to(this.modelGroup.position, { x: -1.09, duration: 3 }, '<')
+      // .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
       .to(this.modelGroup.rotation, { y: -0.74, z: 4.7, duration: 2 })
       .to(
         this.modelGroup.position,
         { x: 3.08, y: -1.35, z: 3.02, duration: 2 },
-        '<'
+        '<+=0.4'
       )
-      .to(this.fused.material.uniforms.progress, { value: 0.53, duration: 8 })
-      .to(this.modelInnerGroup.rotation, { y: Math.PI * 2, duration: 6 }, '<')
+      .to(this.fused.material.uniforms.progress, { value: 0.53, duration: 8 }, '<-=0.7')
+      .to(this.modelInnerGroup.rotation, { y: Math.PI * 2, duration: 6 }, '<+=0.6')
       .to(this.stripeMesh.rotation, { y: Math.PI * 2, duration: 6 }, '<');
   }
 }
