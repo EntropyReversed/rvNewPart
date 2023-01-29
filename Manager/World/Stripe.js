@@ -26,7 +26,7 @@ export default class Stripe {
       amplitude: { value: 0.06 },
       speed: { value: 0.2 },
       frequency: { value: 4 },
-      offset: { value: 0.1 },
+      offset: { value: 0.01 },
       time: { value: 0 },
       progress: { value: -0.05 },
     };

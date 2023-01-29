@@ -36,7 +36,7 @@ export const shaderStripe = (uniforms) => {
         // the function which defines the displacement
         float displace(vec3 point) {
           float vel = time * speed;
-          return noise(vec3(point.x * frequency + vel, point.y * frequency + vel, point.z * frequency + vel)) * amplitude * (1.0 - smoothstep(0.0, 0.05, uv.y));
+          return noise(vec3(point.x, point.y, point.z) * frequency + vel) * amplitude * (1.0 - smoothstep(0.0, 0.05, uv.y));
         }
         
         vec3 orthogonal(vec3 v) {
