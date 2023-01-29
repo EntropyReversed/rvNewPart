@@ -30,8 +30,8 @@ export default class Enviroment {
     this.sunLight.position.set(-2.1, 7.4, -5.2);
     this.sunLight.target = this.sunLightTarget;
 
-    const helper = new CameraHelper(this.sunLight.shadow.camera);
-    this.scene.add(helper);
+    // const helper = new CameraHelper(this.sunLight.shadow.camera);
+    // this.scene.add(helper);
 
     this.scene.add(this.sunLightTarget);
     this.scene.add(this.sunLight);
@@ -54,11 +54,11 @@ export default class Enviroment {
     // this.scene.add(helper2);
     // this.scene.add(this.dirLightSecond);
 
-    const gui = new dat.GUI();
-    var folder1 = gui.addFolder('light');
-    folder1.add(this.sunLight.position, 'x', -20, 20, 0.01);
-    folder1.add(this.sunLight.position, 'y', -20, 20, 0.01);
-    folder1.add(this.sunLight.position, 'z', -20, 20, 0.01);
+    // const gui = new dat.GUI();
+    // var folder1 = gui.addFolder('light');
+    // folder1.add(this.sunLight.position, 'x', -20, 20, 0.01);
+    // folder1.add(this.sunLight.position, 'y', -20, 20, 0.01);
+    // folder1.add(this.sunLight.position, 'z', -20, 20, 0.01);
     // var folder2 = gui.addFolder('lightFront');
     // folder2.add(this.dirLightSecond.position, 'x', -20, 20, 0.01);
     // folder2.add(this.dirLightSecond.position, 'y', -20, 20, 0.01);

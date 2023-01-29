@@ -23,9 +23,9 @@ export default class Stripe {
       diffuse: { value: new Color('rgb(255,255,255)') },
       roughness: { value: 0.3 },
       metalness: { value: 0.9 },
-      amplitude: { value: 0.06 },
+      amplitude: { value: 0.1 },
       speed: { value: 0.2 },
-      frequency: { value: 4 },
+      frequency: { value: 3.14 },
       offset: { value: 0.01 },
       time: { value: 0 },
       progress: { value: -0.05 },
@@ -55,14 +55,14 @@ export default class Stripe {
       .timeline()
       .set(this.stripe, { visible: true })
       .set(this.stripe.material, { depthWrite: true })
-      // .to(this.manager.world.enviroment.sunLight.position, {x: -3})
       // .set()
       // .to(
       //   this.paint.material.uniforms.progress,
       //   { value: 1, duration: 2 },
       //   '<+=0.1'
       // )
-      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 }, "<");
+      .to(this.material.uniforms.progress, { value: 0.2, duration: 3 }, "<")
+      .to(this.material.uniforms.progress, { value: -0.05, duration: 3 });
     // .to(
     //   this.paint.material.uniforms.progress,
     //   { value: 0, duration: 2 },

@@ -37,7 +37,7 @@ export const shaderFused = (uniforms) => {
       `,
       '#include <dithering_fragment>': `
         vec2 uv = vUv;
-        uv.y += (cos(uv.x*15.)/20.0);
+        uv.y += (cos(uv.x*15.0)/30.0);
         float alphaM = 1.0 - smoothstep(progress,progress+0.05, uv.y);
         gl_FragColor.a = alphaM; 
       `,

@@ -189,15 +189,16 @@ export default class Model {
 
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 3 })
       .to(this.modelGroup.position, { x: 2.5, y: -1.66, z: 2.8, duration: 3 }, '<')
+      .to(this.manager.world.enviroment.sunLight.position, {x: -3}, "<")
       // .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
-      .to(this.modelGroup.rotation, { y: -0.74, z: 4.7, duration: 2 })
-      .to(this.fused.material.uniforms.progress, { value: 0.53, duration: 8 }, '<-=0.7')
+      .to(this.modelGroup.rotation, { y: -0.74, z: 4.7, duration: 2 }, "+=0.2")
+      .to(this.fused.material.uniforms.progress, { value: 0.53, duration: 8 }, '<-=0.9')
       .to(
         this.modelGroup.position,
         { x: 3.08, y: -1.35, z: 3.02, duration: 2 },
         '<+=0.8'
       )
-      .to(this.modelInnerGroup.rotation, { y: Math.PI * 2, duration: 6 }, '<+=0.6')
+      .to(this.modelInnerGroup.rotation, { y: Math.PI * 2, duration: 6 }, '<+=1')
       .to(this.stripeMesh.rotation, { y: Math.PI * 2, duration: 6 }, '<');
   }
 }

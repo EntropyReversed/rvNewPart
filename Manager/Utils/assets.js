@@ -2,7 +2,7 @@ export default [
   {
     name: 'model',
     type: 'glbModel',
-    path: '/newM2.glb',
+    path: '/newM3.glb',
   },
   // {
   //   name: 'displacementMap',
