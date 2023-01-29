@@ -10,7 +10,7 @@ export default class Stripe {
     this.manager = manager;
     this.stripe = stripe;
     this.group = group;
-    console.log(group);
+    console.log(manager.world.enviroment.sunLight);
     // this.paint = new Paint(this.manager, this.group);
     this.setUp();
   }
@@ -54,13 +54,15 @@ export default class Stripe {
     this.timeline = gsap
       .timeline()
       .set(this.stripe, { visible: true })
+      .set(this.stripe.material, { depthWrite: true })
+      // .to(this.manager.world.enviroment.sunLight.position, {x: -3})
       // .set()
       // .to(
       //   this.paint.material.uniforms.progress,
       //   { value: 1, duration: 2 },
       //   '<+=0.1'
       // )
-      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 });
+      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 }, "<");
     // .to(
     //   this.paint.material.uniforms.progress,
     //   { value: 0, duration: 2 },
