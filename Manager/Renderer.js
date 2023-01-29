@@ -47,7 +47,7 @@ export default class Renderer {
     this.renderer.gammaOutput = true;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = PCFSoftShadowMap;
-    this.renderer.setClearColor(new Color('rgb(0,0,0)'));
+    this.renderer.setClearColor(new Color('#141414'));
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(this.sizes.pixelRatio);
     this.renderer.setViewport(0, 0, this.sizes.width, this.sizes.height);

@@ -137,8 +137,15 @@ footer {
   font-family: sans-serif;
   user-select: none;
   pointer-events: none;
-  padding-right: 15px;
-  padding-left: 15px;
+
+  will-change: transform;
+}
+
+.scene h2.titleLoop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(104px, 10.42vw, 200px);
 }
 
 .firstTitle {
@@ -183,10 +190,10 @@ footer {
   height: var(--vh100) !important;
   max-height: var(--vh100) !important;
 
-  /* position: relative; */
+  position: relative;
 }
-
-/* .scene-wrap::before {
+/* 
+.scene-wrap::before {
   position: absolute;
   content: '';
   top: 0;

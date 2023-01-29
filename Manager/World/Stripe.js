@@ -3,7 +3,6 @@ import gsap from 'gsap';
 
 import * as dat from 'dat.gui';
 import { shaderStripe } from '../../Manager/Shaders/ShaderStripe';
-import Paint from '../../Manager/World/Paint';
 
 export default class Stripe {
   constructor(manager, stripe, group) {
@@ -87,17 +86,36 @@ export default class Stripe {
       .to(this.material.uniforms.progress, {
         value: -0.05,
         duration: 3,
-      });
-    // .to(
-    //   this.paint.material.uniforms.progress,
-    //   { value: 0, duration: 2 },
-    //   '+=1.2'
-    // );
+      })
+      .to({}, { duration: 1 })
+      .to(this.manager.camera.perspectiveCamera.position, { x: -10, y: 5.7, z: 7.5 })
+      .to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
+      .to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
+      .to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
+      .fromTo(
+        '.titleLoop',
+        { scale: 0.1, yPercent: -150, opacity: 0 },
+        {
+          keyframes: [
+            { scale: 0.1, yPercent: -150, opacity: 0 },
+            { scale: 1, yPercent: -50, opacity: 1 },
+            { scale: 0.1, yPercent: 100, opacity: 0 }
+          ],
+          duration: 3,
+          stagger: 0.6
+        },
+        '-=1.2'
+      )
+      .to(this.manager.camera.perspectiveCamera.position, { x: -4.85, y: 2.86, z: 5.78 }, '-=0.4')
+      .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
+      .to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
+      .to(this.manager.world.enviroment.ambientlight, { intensity: 1.2 }, '<')
+      .to({}, { duration: 1 })
+
     return this.timeline;
   }
 
   updateTime() {
-    // this.paint.update();
     this.material.uniforms.time.value = this.clock.getElapsedTime();
   }
 }

@@ -6,7 +6,7 @@ import {
   // AxesHelper,
 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-// import { GUI } from 'dat.gui';
+import { GUI } from 'dat.gui';
 import gsap from 'gsap';
 import { animateText } from '../Manager/Utils/animateText';
 
@@ -40,8 +40,12 @@ export default class Camera {
     // this.helper = new CameraHelper(this.perspectiveCamera);
     // this.scene.add(this.helper);
 
-    // const gui = new GUI();
-    // const folder = gui.addFolder('Camera Pos');
+    const gui = new GUI();
+    const folder = gui.addFolder('Camera Pos');
+
+    folder.add(this.perspectiveCamera.position, 'x', -30, 30, 0.01);
+    folder.add(this.perspectiveCamera.position, 'y', -30, 30, 0.01);
+    folder.add(this.perspectiveCamera.position, 'z', -30, 30, 0.01);
 
     // const guiChangeHangler = () => {
     //   window.requestAnimationFrame(this.manager.update());
@@ -78,9 +82,9 @@ export default class Camera {
           y: 0,
           z: -0.8,
           duration: 1,
-          onUpdate: () => {
-            this.perspectiveCamera.updateProjectionMatrix();
-          },
+          // onUpdate: () => {
+          //   this.perspectiveCamera.updateProjectionMatrix();
+          // },
         },
         '<'
       )
@@ -92,9 +96,9 @@ export default class Camera {
           y: 1,
           z: 3.5,
           duration: 1,
-          onUpdate: () => {
-            this.perspectiveCamera.updateProjectionMatrix();
-          },
+          // onUpdate: () => {
+          //   this.perspectiveCamera.updateProjectionMatrix();
+          // },
         },
         '<'
       )
@@ -107,9 +111,9 @@ export default class Camera {
           y: -1.05,
           z: -0.41,
           duration: 1,
-          onUpdate: () => {
-            this.perspectiveCamera.updateProjectionMatrix();
-          },
+          // onUpdate: () => {
+          //   this.perspectiveCamera.updateProjectionMatrix();
+          // },
         }
       )
       .to(

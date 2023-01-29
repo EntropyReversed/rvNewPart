@@ -114,10 +114,10 @@ export default class Model {
     this.modelGroup.add(this.stripeMesh);
 
     const gui = new dat.GUI();
-    // var folder2 = gui.addFolder('Rotation');
-    // folder2.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
-    // folder2.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
-    // folder2.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
+    var folder2 = gui.addFolder('Rotation');
+    folder2.add(this.modelGroup.rotation, 'x', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder2.add(this.modelGroup.rotation, 'y', -Math.PI * 2, Math.PI * 2, 0.01);
+    folder2.add(this.modelGroup.rotation, 'z', -Math.PI * 2, Math.PI * 2, 0.01);
 
     var folder3 = gui.addFolder('Position');
     folder3.add(this.modelGroup.position, 'x', -10, 10, 0.01);
@@ -190,7 +190,6 @@ export default class Model {
       .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 3 })
       .to(this.modelGroup.position, { x: 2.5, y: -1.66, z: 2.8, duration: 3 }, '<')
       .to(this.manager.world.enviroment.sunLight.position, {x: -3}, "<")
-      // .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
       .to(this.modelGroup.rotation, { y: -0.74, z: 4.7, duration: 2 }, "+=0.2")
       .to(this.fused.material.uniforms.progress, { value: 0.53, duration: 8 }, '<-=0.9')
       .to(
