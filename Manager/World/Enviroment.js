@@ -1,7 +1,7 @@
 import {
   Object3D,
   DirectionalLight,
-  // CameraHelper,
+  CameraHelper,
   SpotLight,
   AmbientLight,
 } from 'three';
@@ -30,8 +30,8 @@ export default class Enviroment {
     this.sunLight.position.set(-2.1, 7.4, -5.2);
     this.sunLight.target = this.sunLightTarget;
 
-    // const helper = new CameraHelper(this.sunLight.shadow.camera);
-    // this.scene.add(helper);
+    const helper = new CameraHelper(this.sunLight.shadow.camera);
+    this.scene.add(helper);
 
     this.scene.add(this.sunLightTarget);
     this.scene.add(this.sunLight);
@@ -43,11 +43,26 @@ export default class Enviroment {
     this.ambientlight = new AmbientLight('#ffffff', 1.2);
     this.scene.add(this.ambientlight);
 
-    // const gui = new dat.GUI();
-    // var folder1 = gui.addFolder('light');
-    // folder1.add(this.sunLight.position, 'x', -10, 10, 0.01);
-    // folder1.add(this.sunLight.position, 'y', -10, 10, 0.01);
-    // folder1.add(this.sunLight.position, 'z', -10, 10, 0.01);
+    this.dirLightSecond = new DirectionalLight('#ffffff', 1.5);
+    this.dirLightSecond.castShadow = true;
+    this.dirLightSecond.shadow.camera.far = 60;
+    this.dirLightSecond.shadow.mapSize.set(4096, 4096);
+    this.dirLightSecond.shadow.normalBias = 0.1;
+    this.dirLightSecond.shadow.bias = 0.001;
+    this.dirLightSecond.position.set(-3, 3, 8);
+    const helper2 = new CameraHelper(this.dirLightSecond.shadow.camera);
+    this.scene.add(helper2);
+    this.scene.add(this.dirLightSecond);
+
+    const gui = new dat.GUI();
+    var folder1 = gui.addFolder('light');
+    folder1.add(this.sunLight.position, 'x', -20, 20, 0.01);
+    folder1.add(this.sunLight.position, 'y', -20, 20, 0.01);
+    folder1.add(this.sunLight.position, 'z', -20, 20, 0.01);
+    var folder2 = gui.addFolder('lightFront');
+    folder2.add(this.dirLightSecond.position, 'x', -20, 20, 0.01);
+    folder2.add(this.dirLightSecond.position, 'y', -20, 20, 0.01);
+    folder2.add(this.dirLightSecond.position, 'z', -20, 20, 0.01);
     //     const gui = new GUI();
     // const folder = gui.addFolder('Camera Pos');
 

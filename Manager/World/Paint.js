@@ -8,19 +8,22 @@ export default class Paint {
     this.group = group;
 
     this.clock = new Clock();
-    this.planeGeo = new PlaneGeometry(2, 4, 20, 60);
+    this.planeGeo = new PlaneGeometry(2, 4, 20, 100);
 
     const uniforms = {
       diffuse: { value: new Color('rgb(255,255,255)') },
-      roughness: { value: 0.5 },
+      roughness: { value: 0.3 },
+      metalness: { value: 0.97 },	
       amplitude: { value: 0.4 },
-      speed: { value: 0.15 },
-      frequency: { value: 0.6 },
+      speed: { value: 0.08 },
+      frequency: { value: 0.5 },
+      offset: { value: 0.1 },
       time: { value: 0 },
       progress: { value: 0 },
     };
 
     this.material = shaderPaint(uniforms);
+    this.material.flatShading = false;
     this.material.depthWrite = false;
     // this.material.wireframe = true;
     this.plane = new Mesh(this.planeGeo, this.material);

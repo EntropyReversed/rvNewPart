@@ -187,9 +187,9 @@ export default class Model {
       .set(this.fused.material, { depthWrite: true })
       .set(this.fused.material, { opacity: 1 })
 
-      // .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 3 })
-      // .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
-      // .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
+      .to(this.modelGroup.rotation, { x: -1, y: -1.9, z: 4.66, duration: 3 })
+      .to(this.modelGroup.position, { x: -2.09, duration: 3 }, '<')
+      .to(this.modelInnerGroup.rotation, { z: Math.PI * 2, duration: 6 })
       .to(this.modelGroup.rotation, { y: -0.74, z: 4.7, duration: 2 })
       .to(
         this.modelGroup.position,

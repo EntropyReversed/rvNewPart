@@ -21,7 +21,8 @@ export default class Stripe {
     const uniforms = {
       diffuse: { value: new Color('rgb(255,255,255)') },
       progress: { value: -0.05 },
-      roughness: { value: 0.5 },
+      roughness: { value: 0.3 },
+      metalness: { value: 0.97 },
     };
 
     this.material = shaderStripe(uniforms);
@@ -46,7 +47,7 @@ export default class Stripe {
         { value: 1, duration: 2 },
         '<+=0.1'
       )
-      // .to(this.material.uniforms.progress, { value: 1, duration: 6 }, '-=0.55')
+      .to(this.material.uniforms.progress, { value: 1, duration: 6 }, '-=0.55')
       .to(
         this.paint.material.uniforms.progress,
         { value: 0, duration: 2 },
