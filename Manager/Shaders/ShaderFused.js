@@ -22,7 +22,6 @@ export const shaderFused = (uniforms) => {
 
     vertexShader: monkeyPatch(ShaderChunk.meshphysical_vert, {
       header: `
-        uniform float progress;
         varying vec2 vUv;
       `,
       main: `

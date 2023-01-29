@@ -1,5 +1,5 @@
 import { Color } from 'three';
-import { shaderFused } from '../../Manager/Shaders/shaderFused';
+import { shaderFused } from '../../Manager/Shaders/ShaderFused';
 import * as dat from 'dat.gui';
 
 export default class FusedModel {
@@ -9,11 +9,11 @@ export default class FusedModel {
     this.setUp();
   }
 
-  setUp() {				
+  setUp() {
     const uniforms = {
       diffuse: { value: new Color('rgb(255,255,255)') },
       roughness: { value: 0.3 },
-      metalness: { value: 0.97 },					
+      metalness: { value: 0.97 },
       progress: { value: -0.05 },
     };
 
