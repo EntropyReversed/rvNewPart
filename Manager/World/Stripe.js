@@ -61,8 +61,33 @@ export default class Stripe {
       //   { value: 1, duration: 2 },
       //   '<+=0.1'
       // )
-      .to(this.material.uniforms.progress, { value: 0.2, duration: 3 }, "<")
-      .to(this.material.uniforms.progress, { value: -0.05, duration: 3 });
+      .to(
+        this.material.uniforms.progress,
+        {
+          value: 0.2,
+          duration: 3,
+          // onStart: () => {
+          //   if (this.manager.pause) {
+          //     this.manager.pause = false;
+          //   }
+          // },
+          // onReverseComplete: () => {
+          //   if (!this.manager.pause) {
+          //     this.manager.pause = true;
+          //   }
+          // },
+          // onComplete: () => {
+          //   if (!this.manager.pause) {
+          //     this.manager.pause = true;
+          //   }
+          // },
+        },
+        '<'
+      )
+      .to(this.material.uniforms.progress, {
+        value: -0.05,
+        duration: 3,
+      });
     // .to(
     //   this.paint.material.uniforms.progress,
     //   { value: 0, duration: 2 },
