@@ -22,7 +22,7 @@ export default class Stripe {
     const uniforms = {
       diffuse: { value: new Color('rgb(255,255,255)') },
       roughness: { value: 0.3 },
-      metalness: { value: 0.9 },	
+      metalness: { value: 0.9 },
       amplitude: { value: 0.06 },
       speed: { value: 0.2 },
       frequency: { value: 4 },
@@ -40,7 +40,7 @@ export default class Stripe {
 
     this.material = shaderStripe(uniforms);
     this.material.depthWrite = false;
-    this.stripe.visible = true;
+    this.stripe.visible = false;
 
     this.stripe.material = this.material;
     // const gui = new dat.GUI();
@@ -60,12 +60,12 @@ export default class Stripe {
       //   { value: 1, duration: 2 },
       //   '<+=0.1'
       // )
-      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 })
-      // .to(
-      //   this.paint.material.uniforms.progress,
-      //   { value: 0, duration: 2 },
-      //   '+=1.2'
-      // );
+      .to(this.material.uniforms.progress, { value: 0.5, duration: 6 });
+    // .to(
+    //   this.paint.material.uniforms.progress,
+    //   { value: 0, duration: 2 },
+    //   '+=1.2'
+    // );
     return this.timeline;
   }
 
