@@ -50,70 +50,80 @@ export default class Stripe {
   }
 
   getTimeline() {
-    this.timeline = gsap
-      .timeline()
-      .set(this.stripe, { visible: true })
-      .set(this.stripe.material, { depthWrite: true })
-      // .set()
-      // .to(
-      //   this.paint.material.uniforms.progress,
-      //   { value: 1, duration: 2 },
-      //   '<+=0.1'
-      // )
-      .to(
-        this.material.uniforms.progress,
-        {
-          value: 0.2,
-          duration: 3,
-          // onStart: () => {
-          //   if (this.manager.pause) {
-          //     this.manager.pause = false;
-          //   }
-          // },
-          // onReverseComplete: () => {
-          //   if (!this.manager.pause) {
-          //     this.manager.pause = true;
-          //   }
-          // },
-          // onComplete: () => {
-          //   if (!this.manager.pause) {
-          //     this.manager.pause = true;
-          //   }
-          // },
-        },
-        '<'
-      )
-      .to(this.material.uniforms.progress, {
-        value: -0.05,
-        duration: 3,
-      })
-      .to({}, { duration: 1 })
-      .to(this.manager.camera.perspectiveCamera.position, { x: -10, y: 5.7, z: 7.5 })
-      .to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
-      .to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
-      .to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
-      .fromTo(
-        '.titleLoop',
-        { scale: 0.1, yPercent: -150, opacity: 0 },
-        {
-          keyframes: [
-            { scale: 0.1, yPercent: -150, opacity: 0 },
-            { scale: 1, yPercent: -50, opacity: 1 },
-            { scale: 0.1, yPercent: 100, opacity: 0 }
-          ],
-          duration: 3,
-          stagger: 0.6
-        },
-        '-=1.2'
-      )
-      .to(this.manager.camera.perspectiveCamera.position, { x: -4.85, y: 2.86, z: 5.78 }, '-=0.4')
-      .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
-      .to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
-      .to(this.manager.world.enviroment.ambientlight, { intensity: 1.2 }, '<')
-      .to({}, { duration: 1 })
+		this.timeline = gsap
+			.timeline()
+			.set(this.stripe, { visible: true })
+			.set(this.stripe.material, { depthWrite: true })
+			.to(
+				this.material.uniforms.progress,
+				{
+					value: 0.2,
+					duration: 3,
+					onStart: () => {
+						if (this.manager.pause) {
+							this.manager.pause = false;
+						}
+					},
+					onReverseComplete: () => {
+						if (!this.manager.pause) {
+							this.manager.pause = true;
+						}
+					},
+				},
+				'<',
+			)
+			.to(this.material.uniforms.progress, {
+				value: -0.05,
+				duration: 3,
+			})
+			.to({}, { duration: 1 })
+			.to(this.manager.camera.perspectiveCamera.position, {
+				x: -10,
+				y: 5.7,
+				z: 7.5,
+        delay: 1,
+				onComplete: () => {
+					if (!this.manager.pause) {
+						this.manager.pause = true;
+					}
+				},
+				onReverseComplete: () => {
+					if (this.manager.pause) {
+						this.manager.pause = false;
+					}
+				},
+			})
+			.to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
+			.to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
+			.to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
+			.to('.fadeScreen', { opacity: 1 }, '-=0.2')
+			.fromTo(
+				'.titleLoop',
+				{ scale: 0.1, yPercent: -150, opacity: 0 },
+				{
+					keyframes: [
+						{ scale: 0.1, yPercent: -150, opacity: 0 },
+						{ scale: 1, yPercent: -50, opacity: 1 },
+						{ scale: 0.1, yPercent: 100, opacity: 0 },
+					],
+					duration: 4,
+					stagger: 1,
+				},
+				'-=1.6',
+			)
+			.to('.fadeScreen', { opacity: 0 })
+			.to(
+				this.manager.camera.perspectiveCamera.position,
+				{ x: -4.85, y: 2.86, z: 5.78 },
+				'<-=0.2',
+			)
+			.to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
+			.to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
+			.to(this.manager.world.enviroment.ambientlight, { intensity: 1.5 }, '<')
+			.to({}, { duration: 1 });
 
-    return this.timeline;
-  }
+		return this.timeline;
+	}
 
   updateTime() {
     this.material.uniforms.time.value = this.clock.getElapsedTime();

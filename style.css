@@ -139,6 +139,7 @@ footer {
   pointer-events: none;
 
   will-change: transform;
+  z-index: 2;
 }
 
 .scene h2.titleLoop {
@@ -216,3 +217,14 @@ footer {
   transform: translateY(-50%);
   z-index: 1;
 } */
+
+.fadeScreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #141414;
+  z-index: 1;
+  opacity: 0;
+}

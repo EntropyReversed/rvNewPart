@@ -40,12 +40,12 @@ export default class Camera {
     // this.helper = new CameraHelper(this.perspectiveCamera);
     // this.scene.add(this.helper);
 
-    const gui = new GUI();
-    const folder = gui.addFolder('Camera Pos');
+    // const gui = new GUI();
+    // const folder = gui.addFolder('Camera Pos');
 
-    folder.add(this.perspectiveCamera.position, 'x', -30, 30, 0.01);
-    folder.add(this.perspectiveCamera.position, 'y', -30, 30, 0.01);
-    folder.add(this.perspectiveCamera.position, 'z', -30, 30, 0.01);
+    // folder.add(this.perspectiveCamera.position, 'x', -30, 30, 0.01);
+    // folder.add(this.perspectiveCamera.position, 'y', -30, 30, 0.01);
+    // folder.add(this.perspectiveCamera.position, 'z', -30, 30, 0.01);
 
     // const guiChangeHangler = () => {
     //   window.requestAnimationFrame(this.manager.update());

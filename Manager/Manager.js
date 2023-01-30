@@ -22,10 +22,10 @@ export default class Manager {
     this.masterTimeline = gsap.timeline();
     this.world = new World(this);
 
-    this.pause = false;
+    this.pause = true;
 
-    this.stats = new Stats();
-    document.body.appendChild(this.stats.dom);
+    // this.stats = new Stats();
+    // document.body.appendChild(this.stats.dom);
 
     document.addEventListener('DOMContentLoaded', () => {
       new RealVhCssVar();
@@ -50,7 +50,7 @@ export default class Manager {
 
   update() {
     this.renderer.update();
-    this.stats.update();
+    // this.stats.update();
 
     this.world.model.gradientCircle.updateTime();
     this.world.model.stripe.updateTime();
