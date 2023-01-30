@@ -43,7 +43,7 @@ export default class Renderer {
     this.renderer.outputEncoding = sRGBEncoding;
     // this.renderer.toneMapping = ACESfilmicToneMapping;
     this.renderer.toneMapping = CineonToneMapping;
-    this.renderer.toneMappingExposure = 2;
+    this.renderer.toneMappingExposure = 3;
     this.renderer.gammaOutput = true;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = PCFSoftShadowMap;

@@ -147,15 +147,21 @@ export default class Model {
     this.timeline = gsap
       .timeline()
       .set(this.modelGroup.scale, { x: 0.7, y: 0.7 })
-      .to('.firstTitle', {scale: 0.8, opacity: 0})
+      .to({}, { duration: 0.2 })
+      .to('.firstTitle', { scale: 0.8, opacity: 0 })
       .to('.fadeScreen', { opacity: 0 }, '<+=0.5')
       .to(this.modelGroup.scale, { x: 1, y: 1 }, '<')
       .to(this.circle.material, { opacity: 0.3 });
 
-      this.timeline.to({}, { duration: 0.5 })
-      this.timeline.to(this.modelGroup.scale, { x: 0.8, y: 0.8, duration: 0.8 }, '<-=0.1')
-      animateText(this.timeline, '.secondTitle');
-      this.timeline.to(this.circle.material, { opacity: 1 })
+    this.timeline.to({}, { duration: 0.5 });
+    animateText(this.timeline, '.secondTitle');
+    this.timeline.to(
+      this.modelGroup.scale,
+      { x: 0.8, y: 0.8, duration: 0.8 },
+      '<-=0.1'
+    );
+    this.timeline
+      .to(this.circle.material, { opacity: 1 })
       .to(this.modelGroup.scale, { x: 1.2, y: 1.2, duration: 0.2 }, '<')
       .to(this.modelGroup.rotation, { z: 0.6, duration: 0.4 }, '<')
       .to(
@@ -177,7 +183,7 @@ export default class Model {
         '<+0.2'
       )
       .to(this.lettersTop.material, { opacity: 0.3 });
-      animateText(this.timeline2, '.thirdTitle');
+    animateText(this.timeline2, '.thirdTitle');
 
     this.timeline2.to(this.lettersTop.material, { opacity: 1 }, '<+0.2');
 

@@ -130,16 +130,17 @@ footer {
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
   text-align: center;
-  font-size: clamp(26px, 2.6vw, 50px);
+  font-size: clamp(26px, 2.5vw, 48px);
   font-weight: 400;
   line-height: 1.1;
   width: 100%;
   font-family: sans-serif;
   user-select: none;
   pointer-events: none;
-
+  perspective: 1px;
   will-change: transform;
   z-index: 2;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .scene h2.titleLoop {

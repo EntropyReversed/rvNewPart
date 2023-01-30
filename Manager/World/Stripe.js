@@ -51,93 +51,113 @@ export default class Stripe {
   }
 
   getTimeline() {
-		this.timeline = gsap
-			.timeline()
-			.set(this.stripe, { visible: true })
-			.set(this.stripe.material, { depthWrite: true })
-			.to(
-				this.material.uniforms.progress,
-				{
-					value: 0.2,
-					duration: 3,
-					onStart: () => {
-						if (this.manager.pause) {
-							this.manager.pause = false;
-						}
-					},
-					onReverseComplete: () => {
-						if (!this.manager.pause) {
-							this.manager.pause = true;
-						}
-					},
-				},
-				'<',
-			)
-			.to(this.material.uniforms.progress, {
-				value: -0.05,
-				duration: 3,
-			})
-			.to({}, { duration: 1 })
-			animateText(this.timeline, '.seventhTitle');
+    this.timeline = gsap
+      .timeline()
+      .set(this.stripe, { visible: true })
+      .set(this.stripe.material, { depthWrite: true })
+      .to(
+        this.material.uniforms.progress,
+        {
+          value: 0.2,
+          duration: 3,
+          onStart: () => {
+            if (this.manager.pause) {
+              this.manager.pause = false;
+            }
+          },
+          onReverseComplete: () => {
+            if (!this.manager.pause) {
+              this.manager.pause = true;
+            }
+          },
+        },
+        '<'
+      )
+      .to(this.material.uniforms.progress, {
+        value: -0.05,
+        duration: 3,
+      })
+      .to({}, { duration: 1 });
+    animateText(this.timeline, '.seventhTitle');
 
-			this.timeline.to(this.manager.camera.perspectiveCamera.position, {
-				x: -10,
-				y: 5.7,
-				z: 7.5,
-        delay: 1,
-				onComplete: () => {
-					if (!this.manager.pause) {
-						this.manager.pause = true;
-					}
-				},
-				onReverseComplete: () => {
-					if (this.manager.pause) {
-						this.manager.pause = false;
-					}
-				},
-			},	'<')
-			
-			// .to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
-			// .to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
-			// .to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
-			.to('.fadeScreen', { opacity: 1 }, '-=0.2')
-			// .fromTo(
-			// 	'.titleLoop',
-			// 	{ scale: 0.1, yPercent: -150, opacity: 0 },
-			// 	{
-			// 		keyframes: [
-			// 			{ scale: 0.1, yPercent: -150, opacity: 0 },
-			// 			{ scale: 1, yPercent: -50, opacity: 1 },
-			// 			{ scale: 0.1, yPercent: 100, opacity: 0 },
-			// 		],
-			// 		duration: 4,
-			// 		stagger: 1,
-			// 	},
-			// 	'-=1.6',
-			// )
-			document.querySelectorAll('.titleLoop').forEach(title => {
-				this.timeline.fromTo(title, {scale: 6, opacity: 0}, {scale: 1, opacity: 1, duration: 2}, "-=0.5")
-				.to(title, {color: 'gray'})
-			})
+    this.timeline
+      .to(
+        this.manager.camera.perspectiveCamera.position,
+        {
+          x: -10,
+          y: 5.7,
+          z: 7.5,
+          delay: 1,
+          onComplete: () => {
+            if (!this.manager.pause) {
+              this.manager.pause = true;
+            }
+          },
+          onReverseComplete: () => {
+            if (this.manager.pause) {
+              this.manager.pause = false;
+            }
+          },
+        },
+        '<'
+      )
 
-			this.timeline.to('.titleLoop', {color: 'white'})
-			.to({}, {duration: 0.5})
+      // .to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
+      // .to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
+      // .to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
+      .to('.fadeScreen', { opacity: 1 }, '-=0.2');
+    // .fromTo(
+    // 	'.titleLoop',
+    // 	{ scale: 0.1, yPercent: -150, opacity: 0 },
+    // 	{
+    // 		keyframes: [
+    // 			{ scale: 0.1, yPercent: -150, opacity: 0 },
+    // 			{ scale: 1, yPercent: -50, opacity: 1 },
+    // 			{ scale: 0.1, yPercent: 100, opacity: 0 },
+    // 		],
+    // 		duration: 4,
+    // 		stagger: 1,
+    // 	},
+    // 	'-=1.6',
+    // )
+    document.querySelectorAll('.titleLoop').forEach((title) => {
+      this.timeline
+        .fromTo(
+          title,
+          { scale: 6, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            willChange: 'transform',
+            duration: 1,
+            onComplete: () => {
+              title.style.willChange = 'auto';
+            },
+          },
+          '-=0.5'
+        )
+        .to(title, { color: 'gray' });
+    });
 
-// .fromTo('.titleLoop', {scale: 6, opacity: 0}, {scale: 1, opacity: 1, stagger: 0.4})
+    this.timeline
+      .to('.titleLoop', { color: 'white' })
+      .to({}, { duration: 0.5 });
 
-			// .to('.fadeScreen', { opacity: 0 })
-			// .to(
-			// 	this.manager.camera.perspectiveCamera.position,
-			// 	{ x: -4.85, y: 2.86, z: 5.78 },
-			// 	'<-=0.2',
-			// )
-			// .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
-			// .to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
-			// .to(this.manager.world.enviroment.ambientlight, { intensity: 1.5 }, '<')
-			// .to({}, { duration: 1 });
+    // .fromTo('.titleLoop', {scale: 6, opacity: 0}, {scale: 1, opacity: 1, stagger: 0.4})
 
-		return this.timeline;
-	}
+    // .to('.fadeScreen', { opacity: 0 })
+    // .to(
+    // 	this.manager.camera.perspectiveCamera.position,
+    // 	{ x: -4.85, y: 2.86, z: 5.78 },
+    // 	'<-=0.2',
+    // )
+    // .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
+    // .to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
+    // .to(this.manager.world.enviroment.ambientlight, { intensity: 1.5 }, '<')
+    // .to({}, { duration: 1 });
+
+    return this.timeline;
+  }
 
   updateTime() {
     this.material.uniforms.time.value = this.clock.getElapsedTime();

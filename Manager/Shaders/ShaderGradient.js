@@ -31,7 +31,7 @@ export default {
       vec4 color = texture2D(u_texture, uv);
 
       vec4 colorLetters = texture2D(u_letters_texture, uv);
-      vec3 lettersColor = vec3(0.815);
+      vec3 lettersColor = vec3(0.86);
       
       vec3 circleMask = vec3(circle(uv,1.0));
 
