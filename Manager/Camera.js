@@ -153,7 +153,7 @@ export default class Camera {
       )
       .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<+0.5');
 
-    animateText(this.timeline2, '.fourthTitle', '<+0.5', '<', '<+0.6');
+    animateText(this.timeline2, '.fifthTitle', '<+0.5', '<', '<+0.6');
 
     return this.timeline2;
   }

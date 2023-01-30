@@ -35,7 +35,7 @@ export default class World {
   setUpTimeline() {
     const linesTimeline = this.model.lines.getTimeline();
     const linesReverse = this.model.lines.getTimelineReverse();
-    const title1 = this.text.getTimeline();
+    // const title1 = this.text.getTimeline();
     const modelTimeline1 = this.model.timeline;
     const modelTimeline2 = this.model.timeline2;
     const modelTimeline3 = this.model.timeline3;
@@ -49,7 +49,7 @@ export default class World {
 
     this.masterTimeline
       .add(modelTimeline1)
-      .add(title1, '<+0.1')
+      // .add(title1, '<+0.1')
       .add(linesTimeline, '-=0.35')
       .add(modelTimeline2, '-=1.3')
       .add(linesReverse, '-=0.3')

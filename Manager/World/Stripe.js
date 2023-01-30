@@ -3,6 +3,7 @@ import gsap from 'gsap';
 
 import * as dat from 'dat.gui';
 import { shaderStripe } from '../../Manager/Shaders/ShaderStripe';
+import { animateText } from '../../Manager/Utils/animateText';
 
 export default class Stripe {
   constructor(manager, stripe, group) {
@@ -77,7 +78,9 @@ export default class Stripe {
 				duration: 3,
 			})
 			.to({}, { duration: 1 })
-			.to(this.manager.camera.perspectiveCamera.position, {
+			animateText(this.timeline, '.seventhTitle');
+
+			this.timeline.to(this.manager.camera.perspectiveCamera.position, {
 				x: -10,
 				y: 5.7,
 				z: 7.5,
@@ -92,35 +95,46 @@ export default class Stripe {
 						this.manager.pause = false;
 					}
 				},
-			})
-			.to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
-			.to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
-			.to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
+			},	'<')
+			
+			// .to(this.manager.world.enviroment.sunLight, { intensity: 0 }, '<')
+			// .to(this.manager.world.enviroment.spotLight, { intensity: 0 }, '<')
+			// .to(this.manager.world.enviroment.ambientlight, { intensity: 0 }, '<')
 			.to('.fadeScreen', { opacity: 1 }, '-=0.2')
-			.fromTo(
-				'.titleLoop',
-				{ scale: 0.1, yPercent: -150, opacity: 0 },
-				{
-					keyframes: [
-						{ scale: 0.1, yPercent: -150, opacity: 0 },
-						{ scale: 1, yPercent: -50, opacity: 1 },
-						{ scale: 0.1, yPercent: 100, opacity: 0 },
-					],
-					duration: 4,
-					stagger: 1,
-				},
-				'-=1.6',
-			)
-			.to('.fadeScreen', { opacity: 0 })
-			.to(
-				this.manager.camera.perspectiveCamera.position,
-				{ x: -4.85, y: 2.86, z: 5.78 },
-				'<-=0.2',
-			)
-			.to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
-			.to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
-			.to(this.manager.world.enviroment.ambientlight, { intensity: 1.5 }, '<')
-			.to({}, { duration: 1 });
+			// .fromTo(
+			// 	'.titleLoop',
+			// 	{ scale: 0.1, yPercent: -150, opacity: 0 },
+			// 	{
+			// 		keyframes: [
+			// 			{ scale: 0.1, yPercent: -150, opacity: 0 },
+			// 			{ scale: 1, yPercent: -50, opacity: 1 },
+			// 			{ scale: 0.1, yPercent: 100, opacity: 0 },
+			// 		],
+			// 		duration: 4,
+			// 		stagger: 1,
+			// 	},
+			// 	'-=1.6',
+			// )
+			document.querySelectorAll('.titleLoop').forEach(title => {
+				this.timeline.fromTo(title, {scale: 6, opacity: 0}, {scale: 1, opacity: 1, duration: 2}, "-=0.5")
+				.to(title, {color: 'gray'})
+			})
+
+			this.timeline.to('.titleLoop', {color: 'white'})
+			.to({}, {duration: 0.5})
+
+// .fromTo('.titleLoop', {scale: 6, opacity: 0}, {scale: 1, opacity: 1, stagger: 0.4})
+
+			// .to('.fadeScreen', { opacity: 0 })
+			// .to(
+			// 	this.manager.camera.perspectiveCamera.position,
+			// 	{ x: -4.85, y: 2.86, z: 5.78 },
+			// 	'<-=0.2',
+			// )
+			// .to(this.manager.world.enviroment.sunLight, { intensity: 1 }, '<')
+			// .to(this.manager.world.enviroment.spotLight, { intensity: 1.5 }, '<')
+			// .to(this.manager.world.enviroment.ambientlight, { intensity: 1.5 }, '<')
+			// .to({}, { duration: 1 });
 
 		return this.timeline;
 	}

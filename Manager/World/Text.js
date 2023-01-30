@@ -10,7 +10,9 @@ export default class Text {
   }
 
   getTimeline() {
-    animateText(this.timeline, '.firstTitle');
+    // animateText(this.timeline, '.firstTitle');
+    this.timeline.to('.firstTitle', {opacity: 0})
+    .to('.fadeScreen', { opacity: 0 })
     return this.timeline;
     // .fromTo(
     //   '.firstTitle .letter',

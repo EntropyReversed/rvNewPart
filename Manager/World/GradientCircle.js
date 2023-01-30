@@ -146,7 +146,7 @@ export default class GradientCircle {
         '<+=0.2'
       );
 
-    animateText(this.timeline, '.thirdTitle', '<', '<', '<+0.3');
+    animateText(this.timeline, '.fourthTitle', '<', '<', '<+0.3');
 
     this.timeline
       .to(this.model.lettersTop.position, { z: 0.2, duration: 0.2 }, '-=0.3')

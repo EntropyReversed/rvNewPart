@@ -111,7 +111,8 @@ export default class ModelPieces {
         '<'
       );
 
-    animateText(this.timeline, '.fifthTitle', '-=0.5', '<');
+    animateText(this.timeline, '.sixthTitle', '-=0.5', '<');
+    this.timeline.to({}, {duration: 0.3})
 
     this.pieces.forEach((piece) => {
       this.timeline.set(piece, { visible: false });
